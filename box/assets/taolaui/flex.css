@@ -2,10 +2,62 @@
  * @Author: ataola 
  * @Date: 2020-04-19 00:28:16 
  * @Last Modified by: ataola
- * @Last Modified time: 2020-04-19 00:28:38
+ * @Last Modified time: 2020-04-19 21:43:13
  */
 
  /* flex */
  .flex {
      display: flex
  }
+
+ .flex-left {
+    justify-content: flex-start;
+ }
+
+ .flex-right {
+    justify-content: flex-end;
+}
+
+ .flex-center {
+    justify-content: center;
+ }
+
+ .flex-top {
+    align-items: flex-start;
+ }
+
+ .flex-middle {
+     align-items: center;
+ }
+
+ .flex-bottom {
+    align-items: flex-end;
+ }
+
+ .flex-fixed {
+    flex-shrink: 0;
+ }
+
+ .flex-fluid {
+     flex-grow: 1;
+ }
+
+ .flex-row {
+     flex-direction: row;
+ }
+
+ .flex-col {
+     flex-direction: column;
+ }
+
+.flex-no-wrap {
+    flex-wrap: nowrap;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-full {
+    flex-basis: 100%;
+}

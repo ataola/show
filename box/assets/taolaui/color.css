@@ -1,19 +1,34 @@
 /*
  * @Author: ataola 
  * @Date: 2020-04-19 00:01:41 
- * @Last Modified by:   ataola 
- * @Last Modified time: 2020-04-19 00:01:41 
+ * @Last Modified by: ataola
+ * @Last Modified time: 2020-04-19 15:21:01
  */
 
 /* background-color */
+.bg-warn {
+    background-color: rgb(255, 184, 0);
+}
+
+.bg-error {
+    background-color: rgb(217, 83, 80);
+}
+
+.bg-success {
+    background-color: rgb(93, 184, 92);
+}
+
+/* ataola头像蓝 */
 .bg-blue {
     background-color: #069;
 }
 
+/* ataola头像黄 */
 .bg-yellow {
     background-color: #FDF002;
 }
 
+/* ataola头像红 */
 .bg-red {
     background-color: #FE6666;
 }
@@ -32,5 +47,9 @@
 
 .bg-green {
     background-color: #A3CBA9;
+}
+
+.bg-image-linear {
+    background-image: linear-gradient(-15deg,#78ffd6, #007991);
 }
 

@@ -2,91 +2,632 @@
  * @Author: ataola 
  * @Date: 2020-04-19 00:02:57 
  * @Last Modified by: ataola
- * @Last Modified time: 2020-04-19 00:27:55
+ * @Last Modified time: 2020-04-19 13:04:30
  */
 
  /* padding */
+ /* range: large normal small mini micro two one */
 .padding-large {
-    padding: 40px;
+    padding: 25px;
 }
 
 .padding-large-horizontal {
-    padding: 0 40px 0 40px; 
+    padding: 0 25px 0 25px; 
 }
 
 .padding-large-vertical {
-    padding: 40px 0 40px 0;
+    padding: 25px 0 25px 0;
 }
 
-.padding-parent {
-    padding: 30px;
+.padding-large-parent {
+    padding: 37.5px;
 }
 
-.padding-parent-horizontal {
-    padding: 0 30px 0 30px;
+.padding-large-horizontal-parent {
+    padding: 0 37.5px 0 37.5px;
 }
 
-.padding-parent-vertical {
-    padding: 30px 0 30px 0;
+.padding-large-vertical-parent {
+    padding: 37.5px 0 37.5px 0;
 }
 
-.padding {
+.padding-large-child {
+    padding: 12.5px;
+}
+
+.padding-large-horizontal-child {
+    padding: 0 12.5px 0 12.5px;
+}
+
+.padding-large-vertical-child {
+    padding: 12.5px 0 12.5px 0;
+}
+
+.padding-large-left {
+    padding-left: 25px;
+}
+
+.padding-large-right {
+    padding-right: 25px;
+}
+
+.padding-large-top {
+    padding-top: 25px;
+}
+
+.padding-large-bottom {
+    padding-bottom: 25px;
+}
+
+.padding-large-left-parent {
+    padding-left: 37.5px;
+}
+
+.padding-large-right-parent {
+    padding-right: 37.5px;
+}
+
+.padding-large-top-parent {
+    padding-top: 37.5px;
+}
+
+.padding-large-bottom-parent {
+    padding-bottom: 37.5px;
+}
+
+.padding-large-left-child {
+    padding-left: 12.5px;
+}
+
+.padding-large-right-child {
+    padding-right: 12.5px;
+}
+
+.padding-large-top-child {
+    padding-top: 12.5px;
+}
+
+.padding-large-bottom-child {
+    padding-bottom: 12.5px;
+}
+
+
+.padding, .padding-normal {
     padding: 20px;
 }
 
-.padding-horizontal {
-    padding: 0 20px 0 20px;
+.padding-horizontal, .padding-normal-horizontal {
+    padding: 0 20px 0 20px; 
 }
 
-.padding-vertical {
+.padding-vertical, .padding-normal-vertical {
     padding: 20px 0 20px 0;
 }
 
-
-.padding-normal {
-    padding:15px;
+.padding-parent, .padding-normal-parent {
+    padding: 30px;
 }
 
-.padding-normal-horizontal {
-    padding: 0 15px 0 15px;
+.padding-horizontal-parent, .padding-normal-parent {
+    padding: 0 30px 0 30px;
 }
 
-.padding-normal-vertical {
-    padding: 15px 0 15px 0;
+.padding-vertical-parent, .padding-normal-parent {
+    padding: 30px 0 30px 0;
 }
 
-.padding-child {
+.padding-child, .padding-normal-child {
     padding: 10px;
 }
 
-.padding-child-horizontal {
+.padding-horizontal-child, .padding-normal-child {
     padding: 0 10px 0 10px;
 }
 
-.padding-child-vertical {
+.padding-vertical-child, .padding-normal-child {
     padding: 10px 0 10px 0;
 }
 
+.padding-left, .padding-normal-left {
+    padding-left: 20px;
+}
+
+.padding-right, .padding-normal-right {
+    padding-right: 20px;
+}
+
+.padding-top, .padding-normal-top {
+    padding-top: 20px;
+}
+
+.padding-bottom, padding-normal-bottom  {
+    padding-bottom: 20px;
+}
+
+.padding-left-parent, .padding-normal-left-parent {
+    padding-left: 30px;
+}
+
+.padding-right-parent, .padding-normal-right-parent {
+    padding-right: 30px;
+}
+
+.padding-top-parent, .padding-normal-top-parent {
+    padding-top: 30px;
+}
+
+.padding-bottom-parent, .padding-normal-bottom-parent {
+    padding-bottom: 30px;
+}
+
+.padding-left-child, .padding-normal-left-child {
+    padding-left: 10px;
+}
+
+.padding-right-child, .padding-normal-right-child {
+    padding-right: 10px;
+}
+
+.padding-top-child, .padding-normal-top-child {
+    padding-top: 10px;
+}
+
+.padding-bottom-child, .padding-normal-bottom-child {
+    padding-bottom: 10px;
+}
+
+
 .padding-small {
-    padding: 5px;
+    padding: 15px;
 }
 
 .padding-small-horizontal {
-    padding: 0 5px 0 5px;
+    padding: 0 15px 0 15px; 
 }
 
 .padding-small-vertical {
+    padding: 15px 0 15px 0;
+}
+
+.padding-small-parent {
+    padding: 22.5px;
+}
+
+.padding-small-horizontal-parent {
+    padding: 0 22.5px 0 22.5px;
+}
+
+.padding-small-vertical-parent {
+    padding: 22.5px 0 22.5px 0;
+}
+
+.padding-small-child {
+    padding: 7.5px;
+}
+
+.padding-small-horizontal-child {
+    padding: 0 7.5px 0 7.5px;
+}
+
+.padding-small-vertical-child {
+    padding: 7.5px 0 7.5px 0;
+}
+
+.padding-small-left {
+    padding-left: 15px;
+}
+
+.padding-small-right {
+    padding-right: 15px;
+}
+
+.padding-small-top {
+    padding-top: 15px;
+}
+
+.padding-small-bottom {
+    padding-bottom: 15px;
+}
+
+.padding-small-left-parent {
+    padding-left: 22.5px;
+}
+
+.padding-small-right-parent {
+    padding-right: 22.5px;
+}
+
+.padding-small-top-parent {
+    padding-top: 22.5px;
+}
+
+.padding-small-bottom-parent {
+    padding-bottom: 22.5px;
+}
+
+.padding-small-left-child {
+    padding-left: 7.5px;
+}
+
+.padding-small-right-child {
+    padding-right: 7.5px;
+}
+
+.padding-small-top-child {
+    padding-top: 7.5px;
+}
+
+.padding-small-bottom-child {
+    padding-bottom: 7.5px;
+}
+
+
+.padding-mini {
+    padding: 10px;
+}
+
+.padding-mini-horizontal {
+    padding: 0 10px 0 10px; 
+}
+
+.padding-mini-vertical {
+    padding: 10px 0 10px 0;
+}
+
+.padding-mini-parent {
+    padding: 15px;
+}
+
+.padding-mini-horizontal-parent {
+    padding: 0 15px 0 15px;
+}
+
+.padding-mini-vertical-parent {
+    padding: 15px 0 15px 0;
+}
+
+.padding-mini-child {
+    padding: 5px;
+}
+
+.padding-mini-horizontal-child {
+    padding: 0 5px 0 5px;
+}
+
+.padding-mini-vertical-child {
     padding: 5px 0 5px 0;
 }
 
+.padding-mini-left {
+    padding-left: 10px;
+}
+
+.padding-mini-right {
+    padding-right: 10px;
+}
+
+.padding-mini-top {
+    padding-top: 10px;
+}
+
+.padding-mini-bottom {
+    padding-bottom: 10px;
+}
+
+.padding-mini-left-parent {
+    padding-left: 15px;
+}
+
+.padding-mini-right-parent {
+    padding-right: 15px;
+}
+
+.padding-mini-top-parent {
+    padding-top: 15px;
+}
+
+.padding-mini-bottom-parent {
+    padding-bottom: 15px;
+}
+
+.padding-mini-left-child {
+    padding-left: 5px;
+}
+
+.padding-mini-right-child {
+    padding-right: 5px;
+}
+
+.padding-mini-top-child {
+    padding-top: 5px;
+}
+
+.padding-mini-bottom-child {
+    padding-bottom: 5px;
+}
+
+
 .padding-micro {
-    padding: 2px;
+    padding: 5px;
 }
 
 .padding-micro-horizontal {
-    padding: 0 2px 0 2px;
+    padding: 0 5px 0 5px; 
 }
 
 .padding-micro-vertical {
+    padding: 5px 0 5px 0;
+}
+
+.padding-micro-parent {
+    padding: 7.5px;
+}
+
+.padding-micro-horizontal-parent {
+    padding: 0 7.5px 0 7.5px;
+}
+
+.padding-micro-vertical-parent {
+    padding: 7.5px 0 7.5px 0;
+}
+
+.padding-micro-child {
+    padding: 2.5px;
+}
+
+.padding-micro-horizontal-child {
+    padding: 0 2.5px 0 2.5px;
+}
+
+.padding-micro-vertical-child {
+    padding: 2.5px 0 2.5px 0;
+}
+
+.padding-micro-left {
+    padding-left: 5px;
+}
+
+.padding-micro-right {
+    padding-right: 5px;
+}
+
+.padding-micro-top {
+    padding-top: 5px;
+}
+
+.padding-micro-bottom {
+    padding-bottom: 5px;
+}
+
+.padding-micro-left-parent {
+    padding-left: 7.5px;
+}
+
+.padding-micro-right-parent {
+    padding-right: 7.5px;
+}
+
+.padding-micro-top-parent {
+    padding-top: 7.5px;
+}
+
+.padding-micro-bottom-parent {
+    padding-bottom: 7.5px;
+}
+
+.padding-micro-left-child {
+    padding-left: 2.5px;
+}
+
+.padding-micro-right-child {
+    padding-right: 2.5px;
+}
+
+.padding-micro-top-child {
+    padding-top: 2.5px;
+}
+
+.padding-micro-bottom-child {
+    padding-bottom: 2.5px;
+}
+
+
+.padding-two {
+    padding: 2px;
+}
+
+.padding-two-horizontal {
+    padding: 0 2px 0 2px; 
+}
+
+.padding-two-vertical {
     padding: 2px 0 2px 0;
+}
+
+.padding-two-parent {
+    padding: 3px;
+}
+
+.padding-two-horizontal-parent {
+    padding: 0 3px 0 3px;
+}
+
+.padding-two-vertical-parent {
+    padding: 3px 0 3px 0;
+}
+
+.padding-two-child {
+    padding: 1px;
+}
+
+.padding-two-horizontal-child {
+    padding: 0 1px 0 1px;
+}
+
+.padding-two-vertical-child {
+    padding: 1px 0 1px 0;
+}
+
+.padding-two-left {
+    padding-left: 2px;
+}
+
+.padding-two-right {
+    padding-right: 2px;
+}
+
+.padding-two-top {
+    padding-top: 2px;
+}
+
+.padding-two-bottom {
+    padding-bottom: 2px;
+}
+
+.padding-two-left-parent {
+    padding-left: 3px;
+}
+
+.padding-two-right-parent {
+    padding-right: 3px;
+}
+
+.padding-two-top-parent {
+    padding-top: 3px;
+}
+
+.padding-two-bottom-parent {
+    padding-bottom: 3px;
+}
+
+.padding-two-left-child {
+    padding-left: 1px;
+}
+
+.padding-two-right-child {
+    padding-right: 1px;
+}
+
+.padding-two-top-child {
+    padding-top: 1px;
+}
+
+.padding-two-bottom-child {
+    padding-bottom: 1px;
+}
+
+
+.padding-one {
+    padding: 1px;
+}
+
+.padding-one-horizontal {
+    padding: 0 1px 0 1px; 
+}
+
+.padding-one-vertical {
+    padding: 1px 0 1px 0;
+}
+
+.padding-one-parent {
+    padding: 1.5px;
+}
+
+.padding-one-horizontal-parent {
+    padding: 0 1.5px 0 1.5px;
+}
+
+.padding-one-vertical-parent {
+    padding: 1.5px 0 1.5px 0;
+}
+
+.padding-one-child {
+    padding: 0.5px;
+}
+
+.padding-one-horizontal-child {
+    padding: 0 0.5px 0 0.5px;
+}
+
+.padding-one-vertical-child {
+    padding: 0.5px 0 0.5px 0;
+}
+
+.padding-one-left {
+    padding-left: 1px;
+}
+
+.padding-one-right {
+    padding-right: 1px;
+}
+
+.padding-one-top {
+    padding-top: 1px;
+}
+
+.padding-one-bottom {
+    padding-bottom: 1px;
+}
+
+.padding-one-left-parent {
+    padding-left: 1.5px;
+}
+
+.padding-one-right-parent {
+    padding-right: 1.5px;
+}
+
+.padding-one-top-parent {
+    padding-top: 1.5px;
+}
+
+.padding-one-bottom-parent {
+    padding-bottom: 1.5px;
+}
+
+.padding-one-left-child {
+    padding-left: 0.5px;
+}
+
+.padding-one-right-child {
+    padding-right: 0.5px;
+}
+
+.padding-one-top-child {
+    padding-top: 0.5px;
+}
+
+.padding-one-bottom-child {
+    padding-bottom: 0.5px;
+}
+
+
+.no-padding {
+    padding: 0;
+}
+
+.no-padding-horizontal {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.no-padding-vertical {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+.no-padding-top {
+    padding-top: 0;
+}
+
+.no-padding-bottom  {
+    padding-bottom: 0;
 }
