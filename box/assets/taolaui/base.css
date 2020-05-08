@@ -2,7 +2,7 @@
  * @Author: ataola 
  * @Date: 2020-04-19 12:29:26 
  * @Last Modified by: ataola
- * @Last Modified time: 2020-04-19 13:54:04
+ * @Last Modified time: 2020-05-07 00:17:02
  */
 
 
@@ -26,6 +26,10 @@
     border-radius: 5px;
 }
 
+.round-large {
+    border-radius: 20px;
+}
+
 .thumbnail {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -37,4 +41,10 @@
 
 .shadow-black {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5)
+}
+.pointer {
+    cursor: pointer;
+}
+.half-width {
+    width: 50%;
 }

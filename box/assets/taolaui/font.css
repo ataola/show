@@ -2,7 +2,7 @@
  * @Author: ataola 
  * @Date: 2020-04-19 13:54:36 
  * @Last Modified by: ataola
- * @Last Modified time: 2020-04-19 21:20:41
+ * @Last Modified time: 2020-05-06 23:58:31
  */
 
 
@@ -10,8 +10,8 @@
      font-size: 24px;
  }
 
- .text {
-
+ .text-center {
+    text-align: center;
  }
 
  .text-micro {
@@ -30,6 +30,10 @@
     color:rgba(127,127,127,1);
 }
  
+.font-red {
+    color: #f1404b;
+}
+
 .font-blod {
     font-weight: bold;
 }
