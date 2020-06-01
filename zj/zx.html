@@ -5,10 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>杂项堆积</title>
+    <link type="text/css" rel="stylesheet" href="../box/assets/taolaui/taolaui.css">
+    <style>
+        .box {
+            height: 40px;
+        }
+
+        #countView {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <input type="button" value="全屏" onclick="setFullScreen()" />
+  <div class="flex flex-middle">
+    <div class="flex flex-middle box padding-micro"><input type="button" value="全屏" onclick="setFullScreen()" /></div>
+    <div class="flex flex-middle box padding-micro"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=10086&site=qq&menu=yes"><img border="0" src="./assets/images/qq.gif" alt="点我聊一聊" title="点我聊一聊"/></a></div>
+  </div>
+  <div class="flex box flex-middle">
+      <div id="countBox" class="flex padding-micro">
+          <label for="count">请输入跳转秒数： </label>
+          <input id="count" type="number" value="5" min="5" max="20"  maxlength="2" size="2"/>
+          <input type="button" value="Go" id="countBtn" onclick="countController()"/>
+          <span id="countHint"></span>
+      </div>
+      <div id="countView"><span id="countNum"></span>秒以后自动跳转到ataola的github</div>
+  </div>
 </body>
 <script>
     function setFullScreen() {
@@ -31,6 +53,41 @@
         }
     }
     //参考： https://zhuanlan.zhihu.com/p/30160684
+
+    function countController() {
+        let count = document.getElementById('count');
+        let num = Number(count.value);
+        if (num >=5 && num <=20) {
+            let countBox = document.getElementById('countBox');
+            let countView = document.getElementById('countView');
+            let countNum = document.getElementById('countNum');
+            countBox.style.display = 'none';
+            countView.style.display = 'block';
+            countNum.textContent = num;
+            setTimeout(function() {
+                num --;
+                if (num > 0) {
+                    countNum.textContent = num;
+                    setTimeout(arguments.callee, 1000);
+                } else {
+                    location.href = 'https://github.com/ataola';
+                }
+            }, 1000);
+        } else {
+            let countHint = document.getElementById('countHint');
+            countHint.textContent = '输入数字不合法！请输入5-20以内的数!';
+            countHint.style.color = 'red';
+            countHint.style.display = "inline";
+            countHint.style.padding = "0 4px"
+        }
+    }
+
+    let count = document.getElementById('count');
+    count.onfocus = function() {
+        let countHint = document.getElementById('countHint');
+        countHint.textContent = '';
+    }
+
 </script>
 
 </html>
