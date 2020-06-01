@@ -1,8 +1,8 @@
 /*
  * @Author: ataola 
  * @Date: 2020-04-19 00:28:16 
- * @Last Modified by: ataola
- * @Last Modified time: 2020-04-19 21:43:13
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2020-06-01 17:46:28
  */
 
  /* flex */
@@ -20,6 +20,13 @@
 
  .flex-center {
     justify-content: center;
+ }
+
+ .flex-space-between {
+     justify-content: space-between;
+ }
+ .flex-align-content-full {
+     align-content: space-between;
  }
 
  .flex-top {
