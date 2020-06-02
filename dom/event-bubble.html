@@ -25,6 +25,19 @@
       align-items: center;
     }
 
+    #show {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 1000px;
+      background-color: #aacfcf;
+      opacity: .8;
+      color: #fff;
+      text-align: center;
+      z-index: 2;
+    }
+
     #grandfather {
       width: 400px;
       height: 400px;
@@ -53,6 +66,9 @@
 </head>
 
 <body>
+  <div id="show">
+    <h4>Event capture sequence:</h4>
+  </div>
   <div id="app">
     <div id="grandfather">
       <span>grandfather</span>
@@ -65,15 +81,18 @@
 </body>
 <script>
   function grandfather() {
-    alert('grandfather clicked!');
+    addP('grandfather bubble!')
+    // alert('grandfather clicked!');
   }
 
   function father() {
-    alert('father clicked');
+    addP('father bubble!');
+    // alert('father clicked');
   }
 
   function son(e) {
-    alert('son clicked!');
+    addP('son bubble!');
+    // alert('son clicked!');
     e = e || window.event;
     if (e.stopPropagation) {
       e.stopPropagation();
@@ -88,6 +107,7 @@
     father,
     son
   };
+  // 除了监听子元素， 也可以在父元素进行事件委托，这个效率高点
   for (const val in obj) {
     const elem = document.getElementById(val);
     if (elem.addEventListener) {
@@ -96,6 +116,46 @@
       elem.attachEvent('onclick', obj[val]);
     }
   }
+
+  function addP(value) {
+    const show = document.getElementById('show');
+    const p = document.createElement('p');
+    p.innerText = value;
+    show.appendChild(p);
+  }
+
+  window.addEventListener('click', function() {
+    addP('window capture!');
+  }, true);
+
+  window.addEventListener('click', function() {
+    addP('window bubble!');
+  });
+
+  document.addEventListener('click', function() {
+    addP('document capture!');
+  }, true);
+
+  document.addEventListener('click', function() {
+    addP('document bubble!');
+  });
+
+  document.documentElement.addEventListener('click', function() {
+    addP('html capture!');
+  }, true);
+
+  document.documentElement.addEventListener('click', function() {
+    addP('html bubble!');
+  });
+
+  document.body.addEventListener('click', function() {
+    addP('body capture!');
+  }, true);
+
+  document.body.addEventListener('click', function() {
+    addP('body bubble!');
+  });
+
 </script>
 
 </html>
