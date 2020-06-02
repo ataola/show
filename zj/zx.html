@@ -37,8 +37,8 @@
         }
 
         .slide {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
         }
     </style>
 </head>
@@ -75,7 +75,7 @@
 
         <div class="flex flex-center padding">
             <div class="section flex flex-middle flex-space-between padding-small">
-                <button onclick="startSlide()">开始轮播图</button>
+                <button onclick="startSlide(100)">开始轮播图</button>
                 <img class="slide" src="./assets/images/slide/1.jpg" alt="">
                 <button onclick="stopSlide()">暂停轮播图</button>
             </div>
@@ -179,12 +179,12 @@
     let currentIndex = 0;
     let timerId = null;
 
-    function startSlide() {
+    function startSlide(millisecond) {
         timerId = setInterval(function() {
             currentIndex ++;
             currentIndex = currentIndex % 4;
             slide.src = './assets/images/slide/' + currentIndex + '.jpg';
-        }, 2000);
+        }, millisecond);
     }
 
     function stopSlide() {
