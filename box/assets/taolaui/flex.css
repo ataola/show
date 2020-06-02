@@ -2,7 +2,7 @@
  * @Author: ataola 
  * @Date: 2020-04-19 00:28:16 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2020-06-01 17:46:28
+ * @Last Modified time: 2020-06-02 18:51:42
  */
 
  /* flex */
@@ -25,6 +25,11 @@
  .flex-space-between {
      justify-content: space-between;
  }
+
+ .flex-space-around {
+     justify-content: space-around;
+ }
+
  .flex-align-content-full {
      align-content: space-between;
  }
@@ -49,6 +54,10 @@
      flex-grow: 1;
  }
 
+ .flex-full {
+     flex-basis: 100%;
+ }
+
  .flex-row {
      flex-direction: row;
  }
@@ -65,6 +74,3 @@
     flex-wrap: wrap;
 }
 
-.flex-full {
-    flex-basis: 100%;
-}

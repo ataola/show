@@ -142,7 +142,7 @@
             countHint.style.padding = "0 4px"
         }
     }
-   
+
     let count = document.getElementById('count');
     count.onfocus = function () {
         let countHint = document.getElementById('countHint');
@@ -167,7 +167,7 @@
         }
         timer.style.width = '200px';
         timer.style.backgroundColor = '#cceabb';
-        timer.style.color = '#f7f7f7'; 
+        timer.style.color = '#f7f7f7';
         timer.style.textAlign = 'center';
         timer.innerText =
             `${year}-${formatDate(month)}-${formatDate(date)} ${formatDate(hour)}:${formatDate(minute)}:${formatDate(second)} 星期${weekdays[weekday]}`;
@@ -180,8 +180,8 @@
     let timerId = null;
 
     function startSlide(millisecond) {
-        timerId = setInterval(function() {
-            currentIndex ++;
+        timerId = setInterval(function () {
+            currentIndex++;
             currentIndex = currentIndex % 4;
             slide.src = './assets/images/slide/' + currentIndex + '.jpg';
         }, millisecond);
