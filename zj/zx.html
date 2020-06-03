@@ -80,6 +80,16 @@
                 <button onclick="stopSlide()">暂停</button>
             </div>
         </div>
+
+        <div class="flex flex-center padding">
+            <div class="section flex flex-wrap padding-small">
+                <div class="flex flex-full padding-small">
+                    <button onclick="generateRandomColor()">生成随机色</button>
+                    <button onclick="neonLights()">霓虹灯</button>
+                </div>
+                <div id="colorContainer" class="flex flex-full flex-wrap padding-small"></div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -189,6 +199,39 @@
 
     function stopSlide() {
         clearInterval(timerId);
+    }
+
+    // 生成随机色
+
+    function generateRgb() {
+        function generateRadom() {
+            return parseInt(Math.random() * 255);
+        }
+        return `rgb(${generateRadom()}, ${generateRadom()}, ${generateRadom()})`;
+    }
+
+    function generateRandomColor() {
+        const randomColor = generateRgb();
+        const colorBox = document.createElement('div');
+        colorBox.style.width = '20px';
+        colorBox.style.height = '20px';
+        colorBox.style.backgroundColor = randomColor;
+        document.getElementById('colorContainer').appendChild(colorBox);
+    }
+
+    // 霓虹灯
+    function neonLights() {
+        const colorContainer = document.getElementById('colorContainer');
+        const colors = colorContainer.children;
+        if (colors.length > 10) {
+            window.setInterval(function () {
+                for (const color of colors) {
+                    color.style.backgroundColor = generateRgb();
+                }
+            }, 200);
+        } else {
+            alert('请先添加是个颜色！');
+        }
     }
 </script>
 
