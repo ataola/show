@@ -1,18 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一些我常用到的颜色整理</title>
-    <style>
-        /* 255,192,203 13353215  FFC0CB */
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>颜色表</title>
+	<link type="text/css" rel="stylesheet" href="../box/assets/taolaui/taolaui.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
-        /* 32,34,39 2564640 202227 */
+		html,
+		body {
+			height: 100%;
+		}
 
-        
-    </style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: rgb(243, 243, 243);
+		}
+
+		#app {
+			width: 100%;
+		}
+	</style>
 </head>
+
 <body>
-    
+	<div id="app">
+		<div class="flex flex-center padding">
+			<div id="colors" class="section flex flex-wrap padding-small">
+
+			</div>
+		</div>
+	</div>
 </body>
+
+<script>
+	function generateRGB() {
+		return `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`;
+	}
+
+	// test 1
+	+function () {
+		const start = Date.now();
+		const colors = document.getElementById('colors')
+		const fragment = document.createDocumentFragment();
+		for (let i = 0; i < 60000; i++) {
+			const color = document.createElement('div');
+			color.style.width = '20px';
+			color.style.height = '20px';
+			color.style.margin = '1px';
+			color.style.backgroundColor = generateRGB();
+			fragment.appendChild(color);
+		}
+		colors.appendChild(fragment);
+		const end = Date.now();
+		const result = (end - start) / 1000 + 's';
+		alert("耗时： " + result);
+	}();
+
+// test2
+	// +function () {
+	// 	const colors = document.getElementById('colors')
+	// 	for (let i = 0; i <9000; i++) {
+	// 		const color = document.createElement('div');
+	// 		color.style.width = '20px';
+	// 		color.style.height = '20px';
+	// 		color.style.margin = '1px';
+	// 		color.style.backgroundColor = generateRGB();
+	// 		colors.appendChild(color);
+	// 	}
+	// }();
+
+	// 100000开始就有压力了。
+</script>
+
 </html>

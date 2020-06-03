@@ -2,76 +2,76 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>原生方法获取表单元素</title>
-    <style>
-        #userinfo {
-            width: 300px;
-            margin: 20px auto;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>原生方法获取表单元素</title>
+	<style>
+		#userinfo {
+			width: 300px;
+			margin: 20px auto;
+		}
 
-        #userinfo fieldset {
-            border-radius: 5px;
-            box-shadow: 1px 4px 6px 0px #000;
-        }
+		#userinfo fieldset {
+			border-radius: 5px;
+			box-shadow: 1px 4px 6px 0px #000;
+		}
 
-        #userinfo legend {
-            background-color: #c0c0c0;
-            padding: 2px 15px;
-            border-radius: 5px;
-        }
+		#userinfo legend {
+			background-color: #c0c0c0;
+			padding: 2px 15px;
+			border-radius: 5px;
+		}
 
-        #userinfo input {
-            margin: 8px;
-        }
+		#userinfo input {
+			margin: 8px;
+		}
 
-        #userinfo input[type='text'], input[type='password'] {
-            border-radius: 5px;
-            height: 20px;
-        }
+		#userinfo input[type='text'],
+		input[type='password'] {
+			border-radius: 5px;
+			height: 20px;
+		}
 
-        #userinfo input[type='submit'] {
-            width: 80px;
-            height: 30px;
-            border-radius: 5px;
-            background-color: greenyellow;
-            margin: 0 80px;
-        }
-    </style>
+		#userinfo input[type='submit'] {
+			width: 80px;
+			height: 30px;
+			border-radius: 5px;
+			background-color: greenyellow;
+			margin: 0 80px;
+		}
+	</style>
 </head>
 
 <body>
-    <form id="userinfo" action="" onsubmit="return false">
-        <fieldset>
-            <legend>Userinfo</legend>
-            username: <input type="text" name="uname" id="username" placeholder="please input username" /><br /><br />
-            password: <input type="password" name="passwd" id="password"
-                placeholder="please input password" /><br /><br />
-            <input type="radio" name="hobby" value="running" />running
-            <input type="radio" name="hobby" value="playing">playing
-            <input type="radio" name="hobby" value="writing">writing<br /><br />
-            <input type="submit" id="btn" onclick="showSelect()" />
-        </fieldset>
-    </form>
+	<form id="userinfo" action="" onsubmit="return false">
+		<fieldset>
+			<legend>Userinfo</legend>
+			username: <input type="text" name="uname" id="username" placeholder="please input username" /><br /><br />
+			password: <input type="password" name="passwd" id="password" placeholder="please input password" /><br /><br />
+			<input type="radio" name="hobby" value="running" />running
+			<input type="radio" name="hobby" value="playing">playing
+			<input type="radio" name="hobby" value="writing">writing<br /><br />
+			<input type="submit" id="btn" onclick="showSelect()" />
+		</fieldset>
+	</form>
 </body>
 <script>
-    function showSelect() {
-        const username = document.getElementById('username');
-        const password = document.getElementById('password');
-        const hobby = document.getElementsByName('hobby');
-        let hobbyConfirm = '';
-        for (const h of hobby) {
-            if (h.checked) hobbyConfirm = h;
-        }
-        let res = '';
-        res = res + 'name: ' + username.name + ', value: ' + username.value + '\n';
-        res = res + 'name: ' + password.name + ', value: ' + password.value + '\n';
-        res = res + 'name: ' + hobbyConfirm.name + ', value: ' + hobbyConfirm.value;
+	function showSelect() {
+		const username = document.getElementById('username');
+		const password = document.getElementById('password');
+		const hobby = document.getElementsByName('hobby');
+		let hobbyConfirm = '';
+		for (const h of hobby) {
+			if (h.checked) hobbyConfirm = h;
+		}
+		let res = '';
+		res = res + 'name: ' + username.name + ', value: ' + username.value + '\n';
+		res = res + 'name: ' + password.name + ', value: ' + password.value + '\n';
+		res = res + 'name: ' + hobbyConfirm.name + ', value: ' + hobbyConfirm.value;
 
-        alert(res);
+		alert(res);
 
-    }
+	}
 </script>
 
 </html>
