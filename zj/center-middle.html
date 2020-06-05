@@ -37,6 +37,14 @@
 			box-sizing: border-box;
 		}
 
+		.box-rem {
+			width: 25rem;
+			height: 25rem;
+			background-color: #ff9595;
+			border: 10px solid #342b38;
+			box-sizing: border-box;
+		}
+
 		.box-position {
 			position: relative;
 		}
@@ -55,6 +63,15 @@
 		.box-son {
 			width: 200px;
 			height: 200px;
+			background-color: #80bdab;
+			background-image: url('../box/assets/images/ataola128.png');
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+		}
+
+		.box-son-rem {
+			width: 12.5rem;
+			height: 12.5rem;
 			background-color: #80bdab;
 			background-image: url('../box/assets/images/ataola128.png');
 			background-repeat: no-repeat;
@@ -87,8 +104,38 @@
 
 		.box-example4 {
 			position: relative;
-			top: 100px;
-			left: 100px;
+			top: 90px;
+			left: 90px;
+		}
+
+		.box-example5 {
+			position: relative;
+			top: 6.25rem;
+			left: 6.25rem;
+		}
+
+		.box-example6 {
+			position: absolute;
+			top: calc(50% - 100px);
+			left: calc(50% - 100px);
+		}
+
+		.box-table {
+			display: table;
+		}
+
+		.box-son-table {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.box-grid {
+			display: grid;
+		}
+
+		.box-son-grid {
+			align-self: center;
+			justify-self: center;
 		}
 	</style>
 </head>
@@ -100,7 +147,7 @@
 				<div class="section padding">
 					<h2>考点</h2>
 					<p>position</p>
-					<p>display: flex | -webkit-box</p>
+					<p>display: flex | table | grid | -webkit-box</p>
 					<p>文字居中</p>
 					<p>背景图片垂直居中</p>
 				</div>
@@ -108,21 +155,38 @@
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example1"></div>
+						<div class="box-son box-example1">父相子绝 + margin:auto</div>
 					</div>
 				</div>
 			</div>
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example2"></div>
+						<div class="box-son box-example2">父相子绝 + 负值margin</div>
 					</div>
 				</div>
 			</div>
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example3"></div>
+						<div class="box-son box-example3">父相子绝 + translate</div>
+					</div>
+				</div>
+			</div>
+			<!-- 移动端支持不好
+			 -->
+			<div class="flex flex-center padding">
+				<div class="section padding flex flex-center">
+					<div class="box box-position">
+						<div class="box-son box-example4">父子double相，不适合移动端</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-center padding">
+				<div class="section padding flex flex-center">
+					<div class="box-rem box-position">
+						<div class="box-son-rem box-example5">父子double相，只是用rem进行表示，不适合移动端</div>
 					</div>
 				</div>
 			</div>
@@ -130,7 +194,7 @@
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example4"></div>
+						<div class="box-son box-example6">父相子绝 + calc</div>
 					</div>
 				</div>
 			</div>
@@ -138,7 +202,7 @@
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box flex flex-center flex-middle">
-						<div class="box-son"></div>
+						<div class="box-son">flex</div>
 					</div>
 				</div>
 			</div>
@@ -146,7 +210,24 @@
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-old">
-						<div class="box-son"></div>
+						<div class="box-son">css box</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-center padding">
+				<div class="section padding flex flex-center">
+					<div class="box box-table">
+						<div class="box-son box-son-table">css table</div>
+						<!-- <div class="box-son box-son-table"></div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-center padding">
+				<div class="section padding flex flex-center">
+					<div class="box box-grid">
+						<div class="box-son box-son-grid">css grid</div>
 					</div>
 				</div>
 			</div>
@@ -154,10 +235,11 @@
 			<div class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-font">
-						hello world
+						line-height + text-align
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </body>
