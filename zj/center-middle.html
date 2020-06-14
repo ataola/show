@@ -66,7 +66,7 @@
 			background-color: #80bdab;
 			background-image: url('../box/assets/images/ataola128.png');
 			background-repeat: no-repeat;
-			background-position: 50% 50%;
+			background-position: 50%;
 		}
 
 		.box-son-rem {
@@ -75,7 +75,7 @@
 			background-color: #80bdab;
 			background-image: url('../box/assets/images/ataola128.png');
 			background-repeat: no-repeat;
-			background-position: 50% 50%;
+			background-position: 50%;
 		}
 
 		.box-example1 {
@@ -137,6 +137,12 @@
 			align-self: center;
 			justify-self: center;
 		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
 	</style>
 </head>
 
@@ -152,90 +158,90 @@
 					<p>背景图片垂直居中</p>
 				</div>
 			</div>
-			<div class="flex flex-center padding">
+			<div id="example1" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example1">父相子绝 + margin:auto</div>
+						<div class="box-son box-example1"><a href="#example1">父相子绝 + margin:auto</a></div>
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-center padding">
+			<div id="example2" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example2">父相子绝 + 负值margin</div>
+						<div class="box-son box-example2"><a href="#example2">父相子绝 + 负值margin</a></div>
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-center padding">
+			<div id="example3" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example3">父相子绝 + translate</div>
+						<div class="box-son box-example3"><a href="#example3">父相子绝 + translate</a></div>
 					</div>
 				</div>
 			</div>
 			<!-- 移动端支持不好
 			 -->
-			<div class="flex flex-center padding">
+			<div id="example4" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example4">父子double相，不适合移动端</div>
+						<div class="box-son box-example4"><a href="example4">父子double相</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example5" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box-rem box-position">
-						<div class="box-son-rem box-example5">父子double相，只是用rem进行表示，不适合移动端</div>
+						<div class="box-son-rem box-example5"><a href="#example5">父子double相 + REM</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example6" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-position">
-						<div class="box-son box-example6">父相子绝 + calc</div>
+						<div class="box-son box-example6"><a href="#example6">父相子绝 + calc</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example7" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box flex flex-center flex-middle">
-						<div class="box-son">flex</div>
+						<div class="box-son"><a href="example7">flex</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example8" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-old">
-						<div class="box-son">css box</div>
+						<div class="box-son"><a href="#example8">box(老版flex)</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example9" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-table">
-						<div class="box-son box-son-table">css table</div>
+						<div class="box-son box-son-table"><a href="#example9">css table</a></div>
 						<!-- <div class="box-son box-son-table"></div> -->
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example10" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-grid">
-						<div class="box-son box-son-grid">css grid</div>
+						<div class="box-son box-son-grid"><a href="#example10">css grid</a></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex flex-center padding">
+			<div id="example11" class="flex flex-center padding">
 				<div class="section padding flex flex-center">
 					<div class="box box-font">
-						line-height + text-align
+						<a href="#example11">line-height + text-align</a>
 					</div>
 				</div>
 			</div>
