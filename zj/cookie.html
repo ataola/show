@@ -38,7 +38,11 @@
     <div id="result">
       经过ataola童鞋测试：
       <pre>
-        Google Chrome Cookie数，上限180个，当到达180个以后，会降至150个，然后往上至180个再掉下来。file Size 近似 6KB.
+        Google Chrome Version 84.0.4147.135, Cookie有如下规律，当Cookie个数到达180个的时候，它会清除掉前30个cookie，然后从150个往上至180个后，重复之前的行为。
+        小米内置浏览器 V12.6.22, Cookie规律同楼上。
+        Firefox Version 48.0.2, Cookie有如下规律，上限Cookie数150个，当超过后会删除最前面的Cookie，维持150个数不变。
+
+        以上测试数据文件大小在 3KB - 6 KB不等
       </pre>
     </div>
     <div id="count">
@@ -68,6 +72,7 @@
       content: null,
       name: '',
       value: '',
+      num: 0
     },
     created () {
       const cookie = $.cookie();
@@ -87,7 +92,7 @@
         }
       },
       addRandomCookie () {
-        $.cookie(Math.random().toString(16).substring(2), Math.random().toString(16).substring(2));
+        $.cookie(Math.random().toString(16).substring(2), this.num++);
         this.content = $.cookie();
       }
     }
