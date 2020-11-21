@@ -5,4 +5,7 @@ GitHack (Based on RawGit): `<script src="https://rawcdn.githack.com/zenorocha/cl
 unpkg: `<script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>`
 Statically: `<script src="https://cdn.statically.io/gh/zenorocha/clipboard.js/v2.0.4/dist/clipboard.min.js"></script>`
 
-// https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers
+https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers
+
+
+https://github.com/hhurz/tableExport.jquery.plugin
