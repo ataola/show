@@ -1151,11 +1151,15 @@
               $rows = collectRows($(this));
 
               $($rows).each(function () {
-                ForEachVisibleCell(this, 'td,th', $hrows.length + rowCount, $hrows.length + $rows.length, function (
-                  cell
-                ) {
-                  collectImages(cell, $(cell).children(), teOptions);
-                });
+                ForEachVisibleCell(
+                  this,
+                  'td,th',
+                  $hrows.length + rowCount,
+                  $hrows.length + $rows.length,
+                  function (cell) {
+                    collectImages(cell, $(cell).children(), teOptions);
+                  }
+                );
                 rowCount++;
               });
             });

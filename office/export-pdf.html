@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>export excel base on jquery.tableExport</title>
+	<title>export pdf base on jquery.tableExport</title>
 	<link rel="stylesheet" href="../libs/font-awesome-4.7.0/css/font-awesome.min.css">
 	<style>
 		table  {
@@ -63,24 +63,21 @@
 			cursor: pointer;
 		}
 
-		.export-excel-operate {
+		.export-pdf-operate {
 			position: absolute;
 			right: 50px;
 			display: grid;
 		}
 
+
 	</style>
 </head>
 <body>
 	<div id="tableBox">
-		<div class="export-excel-operate">
-			<button id="exportExcelOneXls" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xls</button>
-			<button id="exportExcelOneXlsx" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xlsx</button>
-			<button id="exportExcelOneCsv" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> csv</button>
-			<button id="exportExcelOneXml" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> xml</button>
-			<button id="exportExcelOneTxt" class="excel-export"><i class="fa fa-file-text-o" aria-hidden="true"></i> txt</button>
-			<button id="exportExcelOneJson" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> JSON</button>
-			<button id="exportExcelOneSql" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> SQL</button>
+		<div class="export-pdf-operate">
+			<button id="exportPdfOneJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
+			<button id="exportPdfOneAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
+			<button id="exportPdfOnePdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
 		</div>
 		<table id="table">
 			<thead>
@@ -177,14 +174,10 @@
 			</tbody>
 		</table>
 		<hr/>
-		<div class="export-excel-operate">
-			<button id="exportExcelTwoXls" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xls</button>
-			<button id="exportExcelTwoXlsx" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xlsx</button>
-			<button id="exportExcelTwoCsv" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> csv</button>
-			<button id="exportExcelTwoXml" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> xml</button>
-			<button id="exportExcelTwoTxt" class="excel-export"><i class="fa fa-file-text-o" aria-hidden="true"></i> txt</button>
-			<button id="exportExcelTwoJson" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> JSON</button>
-			<button id="exportExcelTwoSql" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> SQL</button>
+		<div class="export-pdf-operate">
+			<button id="exportPdfTwoJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
+			<button id="exportPdfTwoAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
+			<button id="exportPdfTwoPdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
 		</div>
 		<table id="tableTwo">
 			<thead>
@@ -265,14 +258,10 @@
 			</tbody>
 		</table>
 		<hr/>
-		<div class="export-excel-operate">
-			<button id="exportExcelThreeXls" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xls</button>
-			<button id="exportExcelThreeXlsx" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> xlsx</button>
-			<button id="exportExcelThreeCsv" class="excel-export"><i class="fa fa-file-excel-o" aria-hidden="true"></i> csv</button>
-			<button id="exportExcelThreeXml" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> xml</button>
-			<button id="exportExcelThreeTxt" class="excel-export"><i class="fa fa-file-text-o" aria-hidden="true"></i> txt</button>
-			<button id="exportExcelThreeJson" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> JSON</button>
-			<button id="exportExcelThreeSql" class="excel-export"><i class="fa fa-file-code-o" aria-hidden="true"></i> SQL</button>
+		<div class="export-pdf-operate">
+			<button id="exportPdfThreeJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
+			<button id="exportPdfThreeAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
+			<button id="exportPdfThreePdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
 		</div>
 		<table id="tableThree">
 			<thead>
@@ -357,104 +346,112 @@
 </body>
 <script src="../libs/jquery/jquery-3.3.1-.min.js"></script>
 <script src="../libs/FileSaver/FileSaver.min.js"></script>
-<script src="../libs/tableExport/libs/js-xlsx/xlsx.core.min.js"></script>
+<script src="../libs/tableExport/libs/es6-promise/es6-promise.auto.min.js"></script>
+<script src="../libs/tableExport/libs/jsPDF/jspdf.min.js"></script>
+<script src="../libs/tableExport/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+<script src="../libs/tableExport/libs/pdfmake/pdfmake.min.js"></script>
+<script src="../libs/tableExport/libs/pdfmake/vfs_fonts.js"></script>
+<script src="../libs/tableExport/libs/html2canvas/html2canvas.min.js"></script>
 <script src="../libs/tableExport/tableExport-ext.js"></script>
 <script>
-$(document).ready(function () {
-  $('#exportExcelOneXls').click(function () {
-    $('#table').tableExport({ type: 'excel', fileName: '警情研判', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelOneXlsx').click(function () {
-    $('#table').tableExport({ type: 'xlsx', fileName: '警情研判', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelOneCsv').click(function () {
-    $('#table').tableExport({ type: 'csv', fileName: '警情研判' });
-  });
-
-  $('#exportExcelOneXml').click(function () {
+	$(document).ready(function () {
+  $('#exportPdfOneJs').click(function () {
     $('#table').tableExport({
-      type: 'xml',
+      type: 'pdf',
       fileName: '警情研判',
-      mso: { fileFormat: 'xmlss', worksheetName: ['杨凌区每日警情统计'] }
+      jspdf: {
+        orientation: 'p',
+        margins: { right: 20, left: 20, top: 30, bottom: 30 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit', fontStyle: 'inherit' }, tableWidth: 'wrap' }
+      }
     });
   });
 
-  $('#exportExcelOneTxt').click(function () {
-    $('#table').tableExport({ type: 'txt', fileName: '警情研判' });
+  $('#exportPdfOneAutotable').click(function () {
+    $('#table').tableExport({
+      type: 'pdf',
+      fileName: '警情研判',
+      jspdf: {
+        orientation: 'l',
+        format: 'a3',
+        margins: { left: 10, right: 10, top: 20, bottom: 20 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit' }, tableWidth: 'auto' }
+      }
+    });
   });
 
-  $('#exportExcelOneJson').click(function () {
-    $('#table').tableExport({ type: 'json', fileName: '警情研判' });
+  $('#exportPdfOnePdfMake').click(function () {
+    $('#table').tableExport({
+      type: 'pdf',
+      fileName: '警情研判',
+      pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
+    });
   });
 
-  $('#exportExcelOneSql').click(function () {
-    $('#table').tableExport({ type: 'sql', fileName: '警情研判' });
-  });
-
-  $('#exportExcelTwoXls').click(function () {
-    $('#tableTwo').tableExport({ type: 'excel', fileName: '初三二班成绩排名', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelTwoXlsx').click(function () {
-    $('#tableTwo').tableExport({ type: 'xlsx', fileName: '初三二班成绩排名', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelTwoCsv').click(function () {
-    $('#tableTwo').tableExport({ type: 'csv', fileName: '初三二班成绩排名' });
-  });
-
-  $('#exportExcelTwoXml').click(function () {
+  $('#exportPdfTwoJs').click(function () {
     $('#tableTwo').tableExport({
-      type: 'xml',
+      type: 'pdf',
       fileName: '初三二班成绩排名',
-      mso: { fileFormat: 'xmlss', worksheetName: ['第一学期'] }
+      jspdf: {
+        orientation: 'p',
+        margins: { right: 20, left: 20, top: 30, bottom: 30 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit', fontStyle: 'inherit' }, tableWidth: 'wrap' }
+      }
     });
   });
 
-  $('#exportExcelTwoTxt').click(function () {
-    $('#tableTwo').tableExport({ type: 'txt', fileName: '初三二班成绩排名' });
+  $('#exportPdfTwoAutotable').click(function () {
+    $('#tableTwo').tableExport({
+      type: 'pdf',
+      fileName: '初三二班成绩排名',
+      jspdf: {
+        orientation: 'l',
+        format: 'a3',
+        margins: { left: 10, right: 10, top: 20, bottom: 20 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit' }, tableWidth: 'auto' }
+      }
+    });
   });
 
-  $('#exportExcelTwoJson').click(function () {
-    $('#tableTwo').tableExport({ type: 'json', fileName: '初三二班成绩排名' });
+  $('#exportPdfTwoPdfMake').click(function () {
+    $('#tableTwo').tableExport({
+      type: 'pdf',
+      fileName: '初三二班成绩排名',
+      pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
+    });
   });
 
-  $('#exportExcelTwoSql').click(function () {
-    $('#tableTwo').tableExport({ type: 'sql', fileName: '初三二班成绩排名' });
-  });
-
-  $('#exportExcelThreeXls').click(function () {
-    $('#tableThree').tableExport({ type: 'excel', fileName: 'class-three-grade-two', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelThreeXlsx').click(function () {
-    $('#tableThree').tableExport({ type: 'xlsx', fileName: 'class-three-grade-two', tableName: 'myTableName' });
-  });
-
-  $('#exportExcelThreeCsv').click(function () {
-    $('#tableThree').tableExport({ type: 'csv', fileName: 'class-three-grade-two' });
-  });
-
-  $('#exportExcelThreeXml').click(function () {
+  $('#exportPdfThreeJs').click(function () {
     $('#tableThree').tableExport({
-      type: 'xml',
+      type: 'pdf',
       fileName: 'class-three-grade-two',
-      mso: { fileFormat: 'xmlss', worksheetName: ['First semester'] }
+      jspdf: {
+        orientation: 'p',
+        margins: { right: 20, left: 20, top: 30, bottom: 30 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit', fontStyle: 'inherit' }, tableWidth: 'wrap' }
+      }
     });
   });
 
-  $('#exportExcelThreeTxt').click(function () {
-    $('#tableThree').tableExport({ type: 'txt', fileName: 'class-three-grade-two' });
+  $('#exportPdfThreeAutotable').click(function () {
+    $('#tableThree').tableExport({
+      type: 'pdf',
+      fileName: 'class-three-grade-two',
+      jspdf: {
+        orientation: 'l',
+        format: 'a3',
+        margins: { left: 10, right: 10, top: 20, bottom: 20 },
+        autotable: { styles: { fillColor: 'inherit', textColor: 'inherit' }, tableWidth: 'auto' }
+      }
+    });
   });
 
-  $('#exportExcelThreeJson').click(function () {
-    $('#tableThree').tableExport({ type: 'json', fileName: 'class-three-grade-two' });
-  });
-
-  $('#exportExcelThreeSql').click(function () {
-    $('#tableThree').tableExport({ type: 'sql', fileName: 'class-three-grade-two' });
+  $('#exportPdfThreePdfMake').click(function () {
+    $('#tableThree').tableExport({
+      type: 'pdf',
+      fileName: 'class-three-grade-two',
+      pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
+    });
   });
 });
 
