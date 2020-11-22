@@ -2,7 +2,7 @@
  * @Author: ataola
  * @Date: 2020-11-22 17:08:19
  * @Last Modified by: ataola
- * @Last Modified time: 2020-11-22 17:46:03
+ * @Last Modified time: 2020-11-22 18:21:45
  */
 'use strict';
 (function ($) {
@@ -23,6 +23,7 @@
         console.log(res);
       }
     }
+    div.style.color = defaults.color;
     document.body.appendChild(div);
     console.log('function printStyle end <========');
   };
