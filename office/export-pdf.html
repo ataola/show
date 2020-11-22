@@ -75,14 +75,36 @@
 			position: relative;
 		}
 
+		.media-screen {
+			text-align: center;
+		}
+
+		.media-screen .excel-export {
+			background-color: crimson;
+		}
+
+		@media print {
+			.media-screen, .export-pdf-operate  {
+				display: none;
+			}
+			#tableBox {
+				width: 920px;
+				margin: 0 auto;
+			}
+		}
+
 	</style>
 </head>
 <body>
+	<div class="media-screen">
+		<button class="excel-export" onclick="javascript:window.print()"><i class="fa fa-angellist" aria-hidden="true"></i> media screen</button>
+	</div>
 	<div id="tableBox">
 		<div class="export-pdf-operate">
 			<button id="exportPdfOneJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
 			<button id="exportPdfOneAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
 			<button id="exportPdfOnePdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
+			<button id="exportPdfOneHtmlTwoCanvas" class="excel-export"><i class="fa fa-file-image-o" aria-hidden="true"></i> html2canvas</button>
 		</div>
 		<table id="table">
 			<thead>
@@ -183,6 +205,7 @@
 			<button id="exportPdfTwoJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
 			<button id="exportPdfTwoAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
 			<button id="exportPdfTwoPdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
+			<button id="exportPdfTwoHtmlTwoCanvas" class="excel-export"><i class="fa fa-file-image-o" aria-hidden="true"></i> html2canvas</button>
 		</div>
 		<table id="tableTwo">
 			<thead>
@@ -267,6 +290,7 @@
 			<button id="exportPdfThreeJs" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> jsPDF </button>
 			<button id="exportPdfThreeAutotable" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Autotable </button>
 			<button id="exportPdfThreePdfMake" class="excel-export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> pdfmake</button>
+			<button id="exportPdfThreeHtmlTwoCanvas" class="excel-export"><i class="fa fa-file-image-o" aria-hidden="true"></i> html2canvas</button>
 		</div>
 		<table id="tableThree">
 			<thead>
@@ -347,7 +371,6 @@
 			</tbody>
 		</table>
 	</div>
-
 </body>
 <script src="../libs/jquery/jquery-3.3.1-.min.js"></script>
 <script src="../libs/FileSaver/FileSaver.min.js"></script>
@@ -355,7 +378,9 @@
 <script src="../libs/tableExport/libs/jsPDF/jspdf.min.js"></script>
 <script src="../libs/tableExport/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
 <script src="../libs/tableExport/libs/pdfmake/pdfmake.min.js"></script>
-<script src="../libs/tableExport/libs/pdfmake/vfs_fonts.js"></script>
+<!-- <script src="../libs/tableExport/libs/pdfmake/vfs_fonts.js"></script> -->
+<script src="../libs/tableExport/libs/pdfmake/gbsn00lp_fonts.js"></script>
+<script src="../libs/tableExport/libs/pdfmake/ZCOOLXiaoWei_fonts.js"></script>
 <script src="../libs/tableExport/libs/html2canvas/html2canvas.min.js"></script>
 <script src="../libs/tableExport/tableExport-ext.js"></script>
 <script>
@@ -391,7 +416,16 @@
       fileName: '警情研判',
       pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
     });
+	});
+
+	$('#exportPdfOneHtmlTwoCanvas').click(function () {
+		$('#table').tableExport({
+      type: 'png',
+			fileName: '警情研判'
+    });
   });
+
+
 
   $('#exportPdfTwoJs').click(function () {
     $('#tableTwo').tableExport({
@@ -424,7 +458,16 @@
       fileName: '初三二班成绩排名',
       pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
     });
+	});
+
+	$('#exportPdfTwoHtmlTwoCanvas').click(function () {
+    $('#tableTwo').tableExport({
+      type: 'png',
+      fileName: '初三二班成绩排名'
+    });
   });
+
+
 
   $('#exportPdfThreeJs').click(function () {
     $('#tableThree').tableExport({
@@ -457,7 +500,15 @@
       fileName: 'class-three-grade-two',
       pdfmake: { enabled: true, docDefinition: { pageOrientation: 'landscape' } }
     });
-  });
+	});
+
+	$('#exportPdfThreeHtmlTwoCanvas').click(function () {
+    $('#tableThree').tableExport({
+      type: 'png',
+      fileName: 'class-three-grade-two'
+    });
+	});
+
 });
 
 </script>

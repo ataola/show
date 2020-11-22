@@ -114,7 +114,7 @@
         docDefinition: {
           pageOrientation: 'portrait', // 'portrait' or 'landscape'
           defaultStyle: {
-            font: 'Roboto' // Default font is 'Roboto' (needs vfs_fonts.js to be included)
+            font: 'ZCOOLXiaoWei' // Default font is 'Roboto' (needs vfs_fonts.js to be included)
           } // For an arabic font include mirza_fonts.js instead of vfs_fonts.js
         }, // For a chinese font include either gbsn00lp_fonts.js or ZCOOLXiaoWei_fonts.js instead of vfs_fonts.js
         fonts: {}
@@ -318,12 +318,10 @@
       if (defaults.outputMode === 'string') return csvData;
 
       if (defaults.outputMode === 'base64') return base64encode(csvData);
-
       if (defaults.outputMode === 'window') {
         downloadFile(false, 'data:text/' + (defaults.type === 'csv' ? 'csv' : 'plain') + ';charset=utf-8,', csvData);
         return;
       }
-
       saveToFile(
         csvData,
         defaults.fileName + '.' + defaults.type,
@@ -913,25 +911,35 @@
 
       saveToFile(docFile, defaults.fileName + '.' + MSDocExt, 'application/vnd.ms-' + MSDocType, '', 'base64', false);
     } else if (defaults.type === 'png') {
-      html2canvas($(el)[0]).then(function (canvas) {
-        var image = canvas.toDataURL();
-        var byteString = atob(image.substring(22)); // remove data stuff
-        var buffer = new ArrayBuffer(byteString.length);
-        var intArray = new Uint8Array(buffer);
+      setTimeout(() => {
+        const pageYOffset = window.pageYOffset;
+        window.pageYOffset = 0;
+        const htmlScrollTop = document.documentElement.scrollTop;
+        document.documentElement.scrollTop = 0;
+        const bodyScrollTop = document.body.scrollTop;
+        document.body.scrollTop = 0;
+        html2canvas($(el)[0]).then(function (canvas) {
+          var image = canvas.toDataURL();
+          var byteString = atob(image.substring(22)); // remove data stuff
+          var buffer = new ArrayBuffer(byteString.length);
+          var intArray = new Uint8Array(buffer);
 
-        for (var i = 0; i < byteString.length; i++) intArray[i] = byteString.charCodeAt(i);
+          for (var i = 0; i < byteString.length; i++) intArray[i] = byteString.charCodeAt(i);
 
-        if (defaults.outputMode === 'string') return byteString;
+          if (defaults.outputMode === 'string') return byteString;
+          if (defaults.outputMode === 'base64') return base64encode(image);
 
-        if (defaults.outputMode === 'base64') return base64encode(image);
+          if (defaults.outputMode === 'window') {
+            window.open(image);
+            return;
+          }
 
-        if (defaults.outputMode === 'window') {
-          window.open(image);
-          return;
-        }
-
-        saveToFile(buffer, defaults.fileName + '.png', 'image/png', '', '', false);
-      });
+          saveToFile(buffer, defaults.fileName + '.png', 'image/png', '', '', false);
+          window.pageYOffset = pageYOffset;
+          document.documentElement.scrollTop = htmlScrollTop;
+          document.body.scrollTop = bodyScrollTop;
+        });
+      }, 5000);
     } else if (defaults.type === 'pdf') {
       if (defaults.pdfmake.enabled === true) {
         // pdf output using pdfmake
@@ -2441,9 +2449,14 @@
 
       if (saveIt) {
         try {
-          blob = new Blob([data], { type: type + ';charset=' + charset });
+          if (defaults.type === 'csv') {
+            blob = new Blob([(defaults.type == 'csv' && defaults.csvUseBOM ? '\ufeff' : '') + csvData], {
+              type: 'text/' + (defaults.type == 'csv' ? 'csv' : 'plain') + ';charset=utf-8'
+            });
+          } else {
+            blob = new Blob([data], { type: type + ';charset=' + charset });
+          }
           saveAs(blob, fileName, bom === false);
-
           if (typeof defaults.onAfterSaveToFile === 'function') defaults.onAfterSaveToFile(data, fileName);
         } catch (e) {
           downloadFile(
