@@ -42,7 +42,11 @@ for (let i = 0; i < btns.length; i++) {
 			}
 		} else {
 			// location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes not support
-			window_monitor = window.open('/zj/win/demo/monitor.html', '_blank', 'width=810,height=500');
+			if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+				window_monitor = window.open('/zj/win/demo/monitor.html', '_blank', 'width=810,height=500');
+			} else {
+				window_monitor = window.open('/show/zj/win/demo/monitor.html', '_blank', 'width=810,height=500');
+			}
 			window_monitor.monitor_list = [url, 'about:blank', 'about:blank', 'about:blank'];
 			window_monitor.monitor_index = 0;
 			setTimeout(() => {

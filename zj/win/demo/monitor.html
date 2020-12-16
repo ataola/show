@@ -90,9 +90,13 @@
 	window.updateMonitor = function(index, url) {
 		const iframes = document.getElementsByTagName('iframe');
 		if (url === 'about:blank') {
-				iframes[index].src = url;
+			iframes[index].src = url;
 		} else {
+			if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
 				iframes[index].src = '/zj/win/demo/' + url;
+			} else {
+				iframes[index].src = 'show/zj/win/demo/' + url;
+			}
 		}
 	}
 
