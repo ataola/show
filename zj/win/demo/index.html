@@ -19,7 +19,7 @@ const btns = document.getElementsByTagName('button');
 for (let i = 0; i < btns.length; i++) {
 	btns[i].addEventListener('click', function(e) {
 		const url = e.target.innerText;
-		if (window_monitor) {
+		if (window_monitor && !window_monitor.closed) {
 			let { monitor_list, monitor_index } = window_monitor;
 			if (!monitor_list.includes(url)) {
 				if (monitor_list.includes('about:blank')) {
