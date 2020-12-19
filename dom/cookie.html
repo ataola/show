@@ -57,7 +57,7 @@
 		static getCookies() {
 			let res = {};
 			if (document.cookie.length > 0) {
-				res = document.cookie.split(';').reduce((pre, cur) => Object.assign(pre, { [cur.split('=')[0].trim().substr(5)]: cur.split('=')[1] }), {});
+				res = document.cookie.split(';').reduce((pre, cur) => Object.assign(pre, { [cur.split('=')[0].trim()]: cur.split('=')[1] }), {});
 			}
 			return res;
 		}
@@ -70,10 +70,10 @@
 		}
 
 		static removeCookie(name) {
-			const { prefix, domain, path } = this;
+			const { path } = this;
 			const date = new Date(0);
 			const expires = `; expires=${ date.toUTCString() }`;
-			document.cookie = prefix + name + '=' + escape('') + '; path=' + path + expires;
+			document.cookie = name + '=' + escape('') + '; path=' + path + expires;
 		}
 	}
 
