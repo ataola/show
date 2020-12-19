@@ -30,6 +30,7 @@
 			<input type="text" v-model="value">
 			<button @click="addCookie()">添加</button>
 		</div>
+		<p>我这是遇见鬼了，项目跑本地删除cookie是好的，部署到线上就挂了，先记下</p>
 	</div>
 </body>
 <script src="../libs/vue/2.6.12/vue.min.js"></script>
@@ -42,7 +43,7 @@
 
 		}
 
-		static getCookie(name) {
+		static get(name) {
 			let value = null;
 			if (document.cookie.length > 0) {
 				const key = this.prefix + name;
@@ -54,7 +55,7 @@
 			return value;
 		}
 
-		static getCookies() {
+		static getAll() {
 			let res = {};
 			if (document.cookie.length > 0) {
 				res = document.cookie.split(';').reduce((pre, cur) => Object.assign(pre, { [cur.split('=')[0].trim()]: cur.split('=')[1] }), {});
@@ -62,14 +63,14 @@
 			return res;
 		}
 
-		static setCookie(name, value, duration = 30) {
+		static set(name, value, duration = 30) {
 			const { prefix, domain, path } = this;
 			const date = new Date(Date.now() + duration * 86400000);
 			const expires = `; expires=${ date.toUTCString() }`;
 			document.cookie = prefix + name + '=' + value + '; path=' + path + '; domain=' + domain + expires;
 		}
 
-		static removeCookie(name) {
+		static remove(name) {
 			const { path } = this;
 			const date = new Date(0);
 			const expires = `; expires=${ date.toUTCString() }`;
@@ -85,7 +86,7 @@
 			value: '',
 		},
 		created() {
-			this.cookies = Cookie.getCookies();
+			this.cookies = Cookie.getAll();
 		},
 		computed: {
 			cookieKey() {
@@ -95,12 +96,12 @@
 		methods: {
 			addCookie() {
 				const { name, value } = this;
-				Cookie.setCookie(name, value);
-				this.cookies = Cookie.getCookies();
+				Cookie.set(name, value);
+				this.cookies = Cookie.getAll();
 			},
 			removeCookie(name) {
-				Cookie.removeCookie(name);
-				this.cookies = Cookie.getCookies();
+				Cookie.remove(name);
+				this.cookies = Cookie.getAll();
 			}
 		},
 	});
