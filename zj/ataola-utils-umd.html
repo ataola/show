@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>utils jsdeliver</title>
+  <title>ataola utils</title>
 </head>
 <body>
   
 </body>
-<script type="module">
-
-import { cookies } from 'https://cdn.jsdelivr.net/npm/@ataola/utils@0.1.7/build/utils.module.js';
-
-console.log(cookies);
+<script src="https://unpkg.com/@ataola/utils@0.1.10/dist/ataola-utils.umd.js"></script>
+<script>
+  const ataola = this['ataola-utils'];
+  console.log(ataola);
+  console.log(ataola.getVersion());
 </script>
 </html>
