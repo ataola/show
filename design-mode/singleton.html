@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式</title>
+  <style>
+    #modal {
+      height: 200px;
+      width: 200px;
+      line-height: 200px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid black;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="BtnOpen">打开</button>
+  <button id="BtnClose">关闭</button>
+</body>
+<script type="text/javascript">
+  class Modal {
+    static getInstance() {
+      if (!Modal.instance) {
+        Modal.instance = new Modal();
+        Modal.instance.createElement();
+      }
+      return Modal.instance;
+    }
+
+    createElement() {
+      this.div = document.createElement('div');
+      this.div.id = 'modal';
+      this.div.innerHTML = '全局模态框';
+      this.div.style.display = 'none';
+      document.body.appendChild(this.div);
+    }
+
+    open() {
+      this.div.style.display = 'block';
+    }
+
+    close() {
+      this.div.style.display = 'none';
+    }
+  }
+
+  document.getElementById('BtnOpen').addEventListener('click', () => {
+    const modal = Modal.getInstance();
+    modal.open();
+  });
+
+  document.getElementById('BtnClose').addEventListener('click', () => {
+    const modal = Modal.getInstance();
+    modal.close();
+  })
+</script>
+
+</html>
