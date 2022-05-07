@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Storage Demo1</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+const DB = {
+  name: 'indexed1',
+  version: 1,
+  db: null,
+  store: {
+    name: 'navigation',
+    keyPath: 'id',
+    indexKey: 'type'
+  }
+};
+
+const INDEXED_DB = {
+  indexedDB: window.indexedDB || window.webkitindexedDB,
+  IDBKeyRange: window.IDBKeyRange || window.webkitIDBKeyRange,
+  openDB: function (dbName, dbVersion) {
+    const self = this;
+    const version = dbVersion || 1;
+    const instance = self.indexedDB.open(dbName, version);
+
+    instance.onerror = function (e) {
+      console.log(`Open DB Error: ${e.currentTarget.error.message}`);
+    };
+
+    instance.onsuccess = function (e) {
+      DB.db = e.target.result;
+      console.log(`Open DB Success: connect to indexedDB ${DB.name}, version ${DB.version}`);
+    };
+
+    instance.onupgradeneeded = function (e) {
+      const db = e.target.result;
+      let store;
+
+      if (!db.objectStoreNames.contains(DB.store.name)) {
+        store = db.createObjectStore(DB.store.name, {
+          keyPath: DB.store.keyPath
+        });
+        console.log(`Init DB ${DB.name} 's object store ${DB.store.name} successed!`);
+        self.storeIndex(store, DB.store.indexKey);
+      }
+    };
+  },
+  storeIndex: function (store, indexKey) {
+    const index = store.createIndex(indexKey, indexKey, {
+      unique: false
+    });
+    console.log(`create index ${indexKey} successed!`);
+  },
+  deleteDB: function (dbName) {
+    const self = this;
+    self.indexedDB.deleteDatabase(dbName);
+    console.log(`DB ${dbName} is deleted!`);
+  },
+  closeDB: function (db) {
+    db.close();
+    console.log('DB is closed!');
+  },
+  insert: function (db, storeName, data) {
+    const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
+    let record;
+
+    for (const item of data) {
+      record = store.add(item);
+      record.onerror = function () {
+        console.log(`${JSON.stringify(item)} 添加失败！`);
+      };
+      record.onsuccess = function () {
+        console.log(`${JSON.stringify(item)} 添加成功！`);
+      };
+    }
+
+  },
+  getDataFromKeyRange: function (db, storeName, keyRange = '') {
+    const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
+    const instance = store.openCursor(keyRange);
+
+    instance.onsuccess = function (e) {
+      let res = e.target.result;
+
+      if (res) {
+        console.log(res);
+        res.continue();
+      } else {
+        console.log('getDataFromKeyRange done!');
+      }
+    };
+  },
+  getDataFromIndex: function (db, storeName, keyRange = '', index = 'type') {
+    const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
+    const instance = store.index(index).openCursor(keyRange);
+
+    instance.onsuccess = function (e) {
+      let res = e.target.result;
+
+      if (res) {
+        console.log(res);
+        res.continue();
+      } else {
+        console.log('getDataFromIndex done!');
+      }
+    };
+  },
+  update: function (db, storeName, keyRange = '') {
+    const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
+    const instance = store.openCursor();
+
+    instance.onsuccess = function (e) {
+      const res = e.target.result;
+      let value, updateRequest;
+
+      if (res) {
+        if (res.key === '1002') {
+          value = res.value;
+          value.url = 'https://zhengjiangtao.cn/ataola';
+          updateRequest = res.update(value);
+
+          updateRequest.onerror = function () {
+            console.log('update error');
+          };
+
+          updateRequest.onsuccess = function () {
+            console.log('update success');
+          };
+        } else {
+          res.continue();
+        }
+      }
+    };
+  },
+  delete: function (db, storeName, keyRange = '') {
+    const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
+    const instance = store.openCursor();
+
+    instance.onsuccess = function (e) {
+      const res = e.target.result;
+      let value, deleteRequest;
+
+      if (res) {
+        if (res.key === '1003') {
+          deleteRequest = res.delete();
+          deleteRequest.onerror = function () {
+            console.log('delete failed');
+          };
+          deleteRequest.onsuccess = function () {
+            console.log('delete success');
+          };
+        } else {
+          res.continue();
+        }
+      }
+    };
+  }
+};
+
+const navigationList = [{
+  id: '1001',
+  type: 'js',
+  name: 'javascript',
+  url: '',
+  avatar: '',
+  description: '学习javascript',
+  order: 1
+}, {
+  id: '1002',
+  type: 'ts',
+  name: 'typescript',
+  url: '',
+  avatar: '',
+  description: '学习typescript',
+  order: 2
+}, {
+  id: '1003',
+  type: 'css',
+  name: 'css',
+  url: '',
+  avatar: '',
+  description: '学习css',
+  order: 3
+}, {
+  id: '1004',
+  type: 'html',
+  name: 'html',
+  url: '',
+  avatar: '',
+  description: '学习html',
+  order: 4
+}, {
+  id: '1005',
+  type: 'nodejs',
+  name: 'nodejs',
+  url: '',
+  avatar: '',
+  description: '学习nodejs',
+  order: 5
+}];
+
+INDEXED_DB.openDB(DB.name, DB.version);
+setTimeout(() => {
+  // insert data to DB store
+  // INDEXED_DB.insert(DB.db, DB.store.name, navigationList);
+
+  // update data url to 'https://zhengjiangtao.cn/ataola' where id is '1002'
+  // INDEXED_DB.update(DB.db, DB.store.name);
+  // delete data where id = '1003'
+  // INDEXED_DB.delete(DB.db, DB.store.name);
+
+  // query data where id = '1004'
+  const keyRange1004 = INDEXED_DB.IDBKeyRange.only('1004');
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, keyRange1004);
+
+  // query data where id >= '1004'
+  const keyRange1004Gte = INDEXED_DB.IDBKeyRange.lowerBound('1004');
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, keyRange1004Gte);
+
+  // query data where id > '1004'
+  const keyRange1004Gt = INDEXED_DB.IDBKeyRange.lowerBound('1004', true);
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, keyRange1004Gt);
+
+  // query data where id <= '1004';
+  const keyRange1004lte = INDEXED_DB.IDBKeyRange.upperBound('1004');
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, keyRange1004lte);
+
+  // query data where id < '1004';
+  const keyRange1004lt = INDEXED_DB.IDBKeyRange.upperBound('1004', true);
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, keyRange1004lt);
+
+  // query data between '1002' and '1004'
+  const range = INDEXED_DB.IDBKeyRange.bound('1002', '1004');
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, range);
+
+  // query data between '1002' and '1004'  '1002'
+  const range1 = INDEXED_DB.IDBKeyRange.bound('1002', '1004', false, true);
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, range1);
+
+  // query data between '1002' and '1004'
+  const range2 = INDEXED_DB.IDBKeyRange.bound('1002', '1004', true, true);
+  INDEXED_DB.getDataFromKeyRange(DB.db, DB.store.name, range2);
+
+  INDEXED_DB.getDataFromIndex(DB.db, DB.store.name, range2);
+  INDEXED_DB.closeDB(DB.db);
+}, 3000);
+</script>
+</html>

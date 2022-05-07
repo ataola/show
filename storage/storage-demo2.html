@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Storage Demo2</title>
+</head>
+<body>
+
+</body>
+<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+<script type="text/javascript">
+const navigationList = [{
+  id: '1001',
+  type: 'js',
+  name: 'javascript',
+  url: '',
+  avatar: '',
+  description: '学习javascript',
+  order: 1
+}, {
+  id: '1002',
+  type: 'ts',
+  name: 'typescript',
+  url: '',
+  avatar: '',
+  description: '学习typescript',
+  order: 2
+}, {
+  id: '1003',
+  type: 'css',
+  name: 'css',
+  url: '',
+  avatar: '',
+  description: '学习css',
+  order: 3
+}, {
+  id: '1004',
+  type: 'html',
+  name: 'html',
+  url: '',
+  avatar: '',
+  description: '学习html',
+  order: 4
+}, {
+  id: '1005',
+  type: 'nodejs',
+  name: 'nodejs',
+  url: '',
+  avatar: '',
+  description: '学习nodejs',
+  order: 5
+}];
+
+var db = new Dexie('indexdb2');
+db.version(1).stores({
+  navigation: 'id'
+});
+
+// https://dexie.org/docs/API-Reference#quick-reference
+db.navigation.bulkPut(navigationList).then(function () {
+  return db.navigation.get('nodejs');
+}).then(function (navigation) {
+  console.log('info ' + JSON.stringify(navigation));
+}).catch(function (error) {
+  console.log('Error: ' + error);
+});
+</script>
+</html>
