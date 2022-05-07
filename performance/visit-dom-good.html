@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>visit dom good</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script type="text/javascript">
+  function goodLoop() {
+    let content = '';
+    for (var i = 0; i < 10000; i++) {
+      content += `${i}\n`;
+    }
+    document.getElementById('app').innerHTML = content
+  }
+
+  goodLoop();
+</script>
+</html>

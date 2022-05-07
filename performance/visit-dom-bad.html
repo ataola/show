@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>visit dom bad</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script type="text/javascript">
+  function badLoop() {
+    for (var i = 0; i < 10000; i++) {
+      document.getElementById('app').innerHTML += `${i}\n`;
+    }
+  }
+
+  badLoop();
+</script>
+</html>
