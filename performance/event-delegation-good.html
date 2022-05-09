@@ -3,16 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>event-delegation-good</title>
+  <style>
+    .red {
+      background-color: red;
+      color: white;
+    }
+
+    .orange {
+      background-color: orange;
+      color: white;
+    }
+
+    .yellow {
+      background-color: yellow;
+      color: white;
+    }
+
+    .green {
+      background-color: green;
+      color: white;
+    }
+
+    .greenyellow {
+      background-color: greenyellow;
+      color: white;
+    }
+
+    .blue {
+      background-color: blue;
+      color: white;
+    }
+
+    .purple {
+      background-color: purple;
+      color: white;
+    }
+
+  </style>
 </head>
 <body>
 <ul id="app">
-  <li>红娃</li>
-  <li>橙娃</li>
-  <li>黄娃</li>
-  <li>绿娃</li>
-  <li>青娃</li>
-  <li>蓝娃</li>
-  <li>紫娃</li>
+  <li data-visible="red">红娃</li>
+  <li data-visible="orange">橙娃</li>
+  <li data-visible="yellow">黄娃</li>
+  <li data-visible="green">绿娃</li>
+  <li data-visible="greenyellow">青娃</li>
+  <li data-visible="blue">蓝娃</li>
+  <li data-visible="purple">紫娃</li>
 </ul>
 </body>
+<script type="text/javascript">
+  /**
+   * 新添加的元素，也有对应的事件，不用重新写
+   */
+  const ul = document.querySelector('ul');
+
+  ul.onmouseover = function (event) {
+    const target = event.target || event.srcElement;
+    if (target.nodeName.toLowerCase() === 'li') {
+      const attr = target.getAttribute('data-visible')
+      target.className = attr;
+    }
+  }
+
+  ul.onmouseout = function (event) {
+    const target = event.target || event.srcElement;
+    if (target.nodeName.toLowerCase() === 'li') {
+      target.className = '';
+    }
+  }
+</script>
 </html>

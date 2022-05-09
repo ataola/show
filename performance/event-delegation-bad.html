@@ -3,16 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>event-delegation-bad</title>
+  <style>
+    .red {
+      background-color: red;
+      color: white;
+    }
+
+    .orange {
+      background-color: orange;
+      color: white;
+    }
+
+    .yellow {
+      background-color: yellow;
+      color: white;
+    }
+
+    .green {
+      background-color: green;
+      color: white;
+    }
+
+    .greenyellow {
+      background-color: greenyellow;
+      color: white;
+    }
+
+    .blue {
+      background-color: blue;
+      color: white;
+    }
+
+    .purple {
+      background-color: purple;
+      color: white;
+    }
+
+  </style>
 </head>
 <body>
 <ul id="app">
-  <li>红娃</li>
-  <li>橙娃</li>
-  <li>黄娃</li>
-  <li>绿娃</li>
-  <li>青娃</li>
-  <li>蓝娃</li>
-  <li>紫娃</li>
+  <li data-visible="red">红娃</li>
+  <li data-visible="orange">橙娃</li>
+  <li data-visible="yellow">黄娃</li>
+  <li data-visible="green">绿娃</li>
+  <li data-visible="greenyellow">青娃</li>
+  <li data-visible="blue">蓝娃</li>
+  <li data-visible="purple">紫娃</li>
 </ul>
 </body>
+<script type="text/javascript">
+  const lis = document.querySelectorAll('li');
+  Array.from(lis).forEach((li, index) => {
+    li.onmouseover = function () {
+      const attr = this.getAttribute('data-visible');
+      console.log(`${index}: ${attr} over`);
+      this.className = attr;
+    }
+
+    li.onmouseout = function () {
+      const attr = this.getAttribute('data-visible');
+      console.log(`${index}: ${attr} out`);
+      this.className = '';
+    }
+  })
+</script>
 </html>
