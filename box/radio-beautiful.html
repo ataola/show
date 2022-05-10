@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>radio beautiful</title>
+  <style>
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+
+    .radio-beauty {
+      width: 10px;
+      height: 10px;
+      line-height: 10px;
+      vertical-align: middle;
+      text-align: center;
+      border: 1px solid purple;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 6px;
+      box-sizing: border-box;
+    }
+
+    input[type="radio"]:checked + .radio-beauty {
+      padding: 1px;
+      background-color: purple;
+      background-clip: content-box;
+    }
+
+    .radio-beauty:hover {
+      box-shadow: 0 0 2px purple;
+    }
+
+    .radio-beauty:hover::after {
+      padding: 1px;
+      background-color: purple;
+      background-clip: content-box;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <h2>Before</h2>
+  <div class="before">
+    <div>
+      <span>菲律宾芒果干</span>
+      <input type="radio" name="fruit" id="FBMGG">
+    </div>
+    <div>
+      <span>菲律宾香蕉干</span>
+      <input type="radio" name="fruit" id="FBXJG">
+    </div>
+    <div>
+      <span>泰国榴莲</span>
+      <input type="radio" name="fruit" id="TGLL">
+    </div>
+    <h2>After</h2>
+    <div class="after">
+      <div>
+        <span>波士顿龙虾</span>
+        <input type="radio" name="food" id="BSDLX" hidden>
+        <label for="BSDLX" class="radio-beauty"></label>
+      </div>
+      <div>
+        <span>巴西烤肥肠</span>
+        <input type="radio" name="food" id="BXKFC" hidden>
+        <label for="BXKFC" class="radio-beauty"></label>
+      </div>
+      <div>
+        <span>意大利面条</span>
+        <input type="radio" name="food" id="YDLMT" hidden>
+        <label for="YDLMT" class="radio-beauty"></label>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
