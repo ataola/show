@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>apply, call, bind</title>
+</head>
+<body>
+<pre>
+   Function.prototype.myApply = function (arg) {
+    const self = arg || window;
+    const args = arguments[1];
+    const fn = Symbol();
+    self[fn] = this;
+    if (args === void 0) {
+      return self[fn]();
+    }
+    const exec = 'arg[fn](' + Array.from(args).join(',') + ')';
+    const res = eval(exec);
+    delete self.fn;
+    return res;
+  };
+
+  Function.prototype.myCall = function (arg) {
+    return this.myApply([].shift.myApply(arguments), arguments)
+  };
+
+  Function.prototype.myBind = function (arg) {
+    const self = this;
+    const argArr = Array.from(arguments);
+    return function () {
+      return self.myApply(arg, argArr.slice(1));
+    }
+  }
+
+  const rose = {
+    name: 'rose',
+    greet: function (age) {
+      console.log(`Hello, I am ${this.name}, ${age} year old`)
+    }
+  };
+
+  const jack = {
+    name: 'jack'
+  }
+
+  rose.greet(24);
+  rose.greet.myApply(jack, [26]);
+  rose.greet.myCall(jack, 25);
+  rose.greet.myBind(jack, 27)();
+</pre>
+</body>
+<script type="text/javascript">
+  Function.prototype.myApply = function (arg) {
+    const self = arg || window;
+    const args = arguments[1];
+    const fn = Symbol();
+    self[fn] = this;
+    if (args === void 0) {
+      return self[fn]();
+    }
+    const exec = 'arg[fn](' + Array.from(args).join(',') + ')';
+    const res = eval(exec);
+    delete self.fn;
+    return res;
+  };
+
+  Function.prototype.myCall = function (arg) {
+    return this.myApply([].shift.myApply(arguments), arguments)
+  };
+
+  Function.prototype.myBind = function (arg) {
+    const self = this;
+    const argArr = Array.from(arguments);
+    return function () {
+      return self.myApply(arg, argArr.slice(1));
+    }
+  }
+
+  const rose = {
+    name: 'rose',
+    greet: function (age) {
+      console.log(`Hello, I am ${this.name}, ${age} year old`)
+    }
+  };
+
+  const jack = {
+    name: 'jack'
+  }
+
+  rose.greet(24);
+  rose.greet.myApply(jack, [26]);
+  rose.greet.myCall(jack, 25);
+  rose.greet.myBind(jack, 27)();
+</script>
+</html>

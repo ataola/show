@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>apply</title>
+</head>
+<body>
+<pre>
+  Function.prototype.myApply = function (arg) {
+  arg.fn = this;
+  arg.fn();
+  delete arg.fn;
+  };
+
+  const rose = {
+  name: 'rose',
+  greet: function() {
+  console.log(`Hello, I am ${this.name}`)
+  }
+  };
+
+  const jack = {
+  name: 'jack'
+  }
+
+  rose.greet();
+  rose.greet.myApply(jack);
+</pre>
+</body>
+<script type="text/javascript">
+  Function.prototype.myApply = function (arg) {
+    arg.fn = this;
+    arg.fn();
+    delete arg.fn;
+  };
+
+  const rose = {
+    name: 'rose',
+    greet: function () {
+      console.log(`Hello, I am ${this.name}`)
+    }
+  };
+
+  const jack = {
+    name: 'jack'
+  }
+
+  rose.greet();
+  rose.greet.myApply(jack);
+</script>
+</html>

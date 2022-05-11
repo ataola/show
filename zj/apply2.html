@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>call</title>
+</head>
+<body>
+<pre>
+   Function.prototype.myApply = function (arg) {
+    const args = arguments[1];
+    arg.fn = this;
+    const exec = 'arg.fn(' + args.join(',') + ')';
+    eval(exec);
+    delete arg.fn;
+  };
+
+  const rose = {
+    name: 'rose',
+    greet: function (age) {
+      console.log(`Hello, I am ${this.name}, ${age} year old`)
+    }
+  };
+
+  const jack = {
+    name: 'jack'
+  }
+
+  rose.greet(24);
+  rose.greet.myApply(jack, [26]);
+</pre>
+</body>
+<script type="text/javascript">
+  Function.prototype.myApply = function (arg) {
+    const args = arguments[1];
+    arg.fn = this;
+    const exec = 'arg.fn(' + args.join(',') + ')';
+    eval(exec);
+    delete arg.fn;
+  };
+
+  const rose = {
+    name: 'rose',
+    greet: function (age) {
+      console.log(`Hello, I am ${this.name}, ${age} year old`)
+    }
+  };
+
+  const jack = {
+    name: 'jack'
+  }
+
+  rose.greet(24);
+  rose.greet.myApply(jack, [26]);
+</script>
+</html>
