@@ -24,11 +24,21 @@
     return this.myApply([].shift.myApply(arguments), arguments)
   };
 
+   // Function.prototype.myBind = function (arg) {
+  //   const self = this;
+  //   const argArr = Array.from(arguments);
+  //   return function () {
+  //     return self.myApply(arg, argArr.slice(1));
+  //   }
+  // }
+
   Function.prototype.myBind = function (arg) {
     const self = this;
-    const argArr = Array.from(arguments);
+    const argArr = Array.prototype.slice.myApply(arguments, 1);
     return function () {
-      return self.myApply(arg, argArr.slice(1));
+      const innerArgsArr = Array.from(arguments);
+      const finalArgsArr = argArr.concat(innerArgsArr)
+      return self.myApply(arg, finalArgsArr);
     }
   }
 
@@ -68,12 +78,41 @@
     return this.myApply([].shift.myApply(arguments), arguments)
   };
 
+  // Function.prototype.myBind = function (arg) {
+  //   const self = this;
+  //   const argArr = Array.from(arguments);
+  //   return function () {
+  //     return self.myApply(arg, argArr.slice(1));
+  //   }
+  // }
+
+  // Function.prototype.myBind = function (arg) {
+  //   const self = this;
+  //   const argArr = Array.prototype.slice.myCall(arguments, 1);
+  //   return function () {
+  //     const innerArgsArr = Array.from(arguments);
+  //     const finalArgsArr = argArr.concat(innerArgsArr)
+  //     return self.myApply(arg, finalArgsArr);
+  //   }
+  // }
+
   Function.prototype.myBind = function (arg) {
     const self = this;
-    const argArr = Array.from(arguments);
-    return function () {
-      return self.myApply(arg, argArr.slice(1));
+    const argArr = Array.prototype.slice.myCall(arguments, 1);
+    const F = function () {
+    };
+    F.prototype = this.prototype;
+    const Bind = function () {
+      if (typeof this !== 'function') {
+        throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+      }
+
+      const innerArgsArr = Array.from(arguments);
+      const finalArgsArr = argArr.concat(innerArgsArr)
+      return self.myApply(this instanceof F ? this : arg || this, finalArgsArr);
     }
+    Bind.prototype = new F();
+    return Bind;
   }
 
   const rose = {

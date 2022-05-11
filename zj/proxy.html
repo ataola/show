@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>proxy</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+  let obj = new Proxy({}, {
+    get(target, key, receiver) {
+      console.log(`getting ${key}!`)
+      return Reflect.get(target, key, receiver)
+    },
+    set(target, key, value, receiver) {
+      console.log(`setting ${key}!`)
+      return Reflect.set(target, key, value, receiver)
+    }
+  })
+
+  obj.count = 1
+  //  setting count!
+  ++obj.count
+  //  getting count!
+  //  setting count!
+  //  2
+</script>
+</html>
