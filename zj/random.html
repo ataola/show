@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>random</title>
+</head>
+
+<body>
+<div id="app">
+  <p>Math.random().toString(16).substring(2) : {{ Math.random().toString(16).substring(2) }}</p>
+  <p>Math.random().toString(36).substring(2) : {{ Math.random().toString(36).substring(2) }}</p>
+  <p>parseInt(Math.random() * Math.pow(2,24)).toString(16): {{ parseInt(Math.random() * Math.pow(2,24)).toString(16) }}</p>
+  <p>parseInt(Math.random() * 1<< 24.toString(16): {{ parseInt(Math.random() * (1 << 24)).toString(16) }}</p>
+</div>
+</body>
+<script src="../libs/vue/2.6.12/vue.min.js"></script>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data() {
+      return {}
+    },
+    methods: {}
+  })
+</script>
+
+</html>

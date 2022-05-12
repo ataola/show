@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五星好评</title>
+  <style>
+    p {
+      color: #e5e56c;
+    }
+  </style>
+</head>
+
+<body>
+<div id="app">
+  <p v-for="rate in rateList" :key="rate">
+    {{ getRateStar(rate) }}
+  </p>
+</div>
+</body>
+<script src="../libs/vue/2.6.12/vue.min.js"></script>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        rateList: [...new Set([0, 0, 1, 1, 2, 3, 4, 5])]
+      }
+    },
+    methods: {
+      getRateStar(rate) {
+        return '★★★★★☆☆☆☆☆'.slice(5 - rate, 10 - rate);
+      }
+    }
+  })
+</script>
+
+</html>

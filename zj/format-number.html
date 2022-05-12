@@ -8,7 +8,7 @@
 <pre>
   let test = '1234567890'
 
-function formatCash(str) {
+  function formatCash(str) {
   let arr = []
 
   for (let i = 1; i < str.length; i++) {
@@ -33,6 +33,8 @@ console.log(formatCash(test)) // 1,234,567,890
   let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
   console.log(format) // 1,234,567,890
+
+  console.log((1234567890).toLocaleString('en-US'))
 </pre>
 </body>
 <script type="text/javascript">
@@ -40,5 +42,17 @@ console.log(formatCash(test)) // 1,234,567,890
   let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
   console.log(format) // 1,234,567,890
+
+
+  function formatCash(str) {
+    return str.split('').reverse().reduce((prev, next, index) => {
+      return ((index % 3) ? next : (next + ',')) + prev
+    })
+  }
+
+  console.log(formatCash('1234567890')) // 1,234,567,890
+
+  console.log((1234567890).toLocaleString('en-US'))
+  console.log((1234567890).toLocaleString())
 </script>
 </html>

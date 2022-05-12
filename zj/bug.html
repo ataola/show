@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bugScript</title>
+</head>
+<body>
+<ol>
+  <li><pre>parseInt(0.0000008) === 8 // true</pre></li>
+  <li><pre>0.1 + 0.2 === 0.3// false, 0.30000000000000004</pre></li>
+</ol>
+</body>
+<script type="text/javascript">
+  console.log(parseInt(0.0000008) === 8) // true
+  console.log(0.1 + 0.2 === 0.3) // false, 0.30000000000000004
+
+  var fn = new Function('str', 'alert(str)');
+  fn('快看， 有bug'); // 将会弹出窗口显示jawil
+</script>
+</html>

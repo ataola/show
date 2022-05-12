@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error</title>
+</head>
+<body>
+<pre>
+  // test code
+   try {
+    throw new Error(404)
+  } catch (e) {
+    window.location.href = `http://stackoverflow.com/search?q=[js]+${e.message}`;
+  }
+</pre>
+</body>
+<script type="text/javascript">
+  try {
+    throw new Error(404)
+  } catch (e) {
+    window.location.href = `http://stackoverflow.com/search?q=[js]+${e.message}`;
+  }
+
+  window.onerror = function (m, f, l) {
+    return true
+  }
+</script>
+</html>

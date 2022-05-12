@@ -108,6 +108,16 @@
   <dd><a href="zj/apply-call-bind.html">apply, call, bind(没有耐心的 前面三个别看了 直接看这个)</a></dd>
   <dd><a href="zj/proxy.html">proxy</a></dd>
   <dd><a href="zj/format-number.html">format number</a></dd>
+  <dd><a href="zj/trim.html">trim</a></dd>
+  <dd><a href="zj/haoping.html">五星好评</a></dd>
+  <dd><a href="zj/error.html">error</a></dd>
+  <dd><a href="zj/random.html">radom</a></dd>
+  <dd><a href="zj/anonymous-function.html">anonymous function</a></dd>
+  <dd><a href="zj/rounding.html">rounding</a></dd>
+  <dd><a href="zj/swap.html">swap</a></dd>
+  <dd><a href="zj/to-number.html">to number</a></dd>
+  <dd><a href="zj/bug.html">bugScript</a></dd>
+  <dd><a href="zj/expression.html">expression</a></dd>
   <dt>
     <h3>效果(一些网上的网页，我扒下来学习下)</h3>
   </dt>
@@ -217,14 +227,14 @@
     console.timeEnd(i);
   }
 
-  eval("for (let i = 1; i <= 10; i++) { console.time(i); for (let j = 0; j <256*256*256; j++) { }; console.timeEnd(i);}")
+  eval('for (let i = 1; i <= 10; i++) { console.time(i); for (let j = 0; j <256*256*256; j++) { }; console.timeEnd(i);}')
 
   function foo() {
-    eval("for (let i = 1; i <= 10; i++) {       \
+    eval('for (let i = 1; i <= 10; i++) {       \
     console.time(i);                          \
     for (let j = 0; j <256*256*256; j++) { }; \
     console.timeEnd(i);                       \
-  }")
+  }')
   }
 
   console.log('========foo========')
@@ -232,11 +242,11 @@
   console.log('========foo========')
 
   function foo2() {
-    (0, eval)("for (let i = 1; i <= 10; i++) {   \
+    (0, eval)('for (let i = 1; i <= 10; i++) {   \
     console.time(i);                          \
     for (let j = 0; j <256*256*256; j++) { }; \
     console.timeEnd(i);                       \
-  }")
+  }')
   }
 
   console.log('========foo2========')
@@ -255,5 +265,11 @@
   console.log('========foo3========')
   foo3()
   console.log('========foo3========')
+
+  setTimeout(() => {
+    Array.prototype.forEach.call(document.querySelectorAll('*'),
+        dom => dom.style.outline = `1px solid #${parseInt(Math.random() *
+            Math.pow(2, 24)).toString(16)}`)
+  })
 </script>
 </html>
