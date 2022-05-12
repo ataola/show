@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Format Number</title>
+</head>
+<body>
+<pre>
+  let test = '1234567890'
+
+function formatCash(str) {
+  let arr = []
+
+  for (let i = 1; i < str.length; i++) {
+    if (str.length % 3 && i == 1)
+      arr.push(str.substr(0, str.length % 3))
+
+    if (i % 3 === 0)
+      arr.push(str.substr(i - 2, 3))
+
+  }
+
+  return arr.join(',')
+}
+
+console.log(formatCash(test)) // 1,234,567,890
+</pre>
+
+<hr>
+
+<pre>
+  let test1 = '1234567890'
+  let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+  console.log(format) // 1,234,567,890
+</pre>
+</body>
+<script type="text/javascript">
+  let test1 = '1234567890'
+  let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+  console.log(format) // 1,234,567,890
+</script>
+</html>
