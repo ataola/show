@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>wonderful, async/await is coming.</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+  function sleep(delay) {
+    return new Promise(reslove => {
+      setTimeout(reslove, delay)
+    })
+  }
+
+  !async function test() {
+    const t1 = +new Date()
+    await sleep(3000)
+    const t2 = +new Date()
+    console.log(t2 - t1)
+  }()
+</script>
+</html>

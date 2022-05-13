@@ -41,6 +41,7 @@
   <dd><a href="box/rem-css.html">rem css</a></dd>
   <dd><a href="box/img-gray.html">img gray</a></dd>
   <dd><a href="line.html">line</a></dd>
+  <dd><a href="type.html">type</a></dd>
   <dt>
     <h3>几何</h3>
   </dt>
@@ -179,6 +180,12 @@
     <a href="performance/event-delegation-bad.html">bad</a>&nbsp;
     <a href="performance/event-delegation-good.html">good</a>&nbsp;
   </dd>
+  <dd>
+    sleep
+    <a href="performance/sleep-bad.html">bad, make cpu gg.</a>&nbsp;
+    <a href="performance/sleep-promise.html">good, promise is coming.</a>&nbsp;
+    <a href="performance/sleep-async-await.html">wonderful, async/await is coming.</a>&nbsp;
+  </dd>
 </dl>
 </body>
 <script type="text/javascript">
@@ -277,5 +284,11 @@
         dom => dom.style.outline = `1px solid #${parseInt(Math.random() *
             Math.pow(2, 24)).toString(16)}`)
   })
+
+  // 获取时间戳
+  console.log(+new Date());
+  console.log(Date.now());
+  console.log(new Date().getTime());
+  console.log((new Date()).valueOf());
 </script>
 </html>

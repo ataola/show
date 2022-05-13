@@ -38,10 +38,10 @@ console.log(formatCash(test)) // 1,234,567,890
 </pre>
 </body>
 <script type="text/javascript">
-  let test1 = '1234567890'
-  let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  let test1 = '1234567890';
+  let format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  console.log(format) // 1,234,567,890
+  console.log(format); // 1,234,567,890
 
 
   function formatCash(str) {
@@ -50,9 +50,10 @@ console.log(formatCash(test)) // 1,234,567,890
     })
   }
 
-  console.log(formatCash('1234567890')) // 1,234,567,890
+  console.log(formatCash('1234567890')); // 1,234,567,890
 
-  console.log((1234567890).toLocaleString('en-US'))
-  console.log((1234567890).toLocaleString())
+  console.log((1234567890).toLocaleString('en-US'));
+  console.log((1234567890).toLocaleString());
+  console.log(new Intl.NumberFormat().format(1234567890)); // 1,234,567,890
 </script>
 </html>

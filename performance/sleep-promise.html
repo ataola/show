@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>good, promise is coming.</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+  function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time))
+  }
+
+  const t1 = +new Date()
+  sleep(3000).then(() => {
+    const t2 = +new Date()
+    console.log(t2 - t1)
+  })
+</script>
+</html>
