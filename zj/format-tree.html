@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>format tree</title>
+  <style>
+    /*https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr*/
+    hr {
+      border: none;
+      border-top: 3px double #333;
+      color: #333;
+      overflow: visible;
+      text-align: center;
+      height: 5px;
+    }
+
+    hr:after {
+      background: #fff;
+      content: 'After magic';
+      padding: 0 4px;
+      position: relative;
+      top: -13px;
+    }
+
+  </style>
+</head>
+<body>
+<pre>
+  let dataSource = [
+    {
+        id:1,
+        pid:0,
+        name:'一级菜单A'
+    },
+    {
+        id:2,
+        pid:0,
+        name:'一级菜单B'
+    },
+    {
+        id:3,
+        pid:0,
+        name:'一级菜单C'
+    },
+    {
+        id:4,
+        pid:1,
+        name:'二级菜单A-A'
+    },
+    {
+        id:5,
+        pid:1,
+        name:'二级菜单A-B'
+    },
+    {
+        id:6,
+        pid:2,
+        name:'二级菜单B-B'
+    },
+    {
+        id:7,
+        pid:2,
+        name:'二级菜单B-C'
+    },
+    {
+        id:8,
+        pid:6,
+        name:'三级菜单B-B-A'
+    },
+    {
+        id:9,
+        pid:6,
+        name:'三级菜单B-B-B'
+    },
+];
+
+</pre>
+<hr/>
+</body>
+<script type="text/javascript">
+  let dataSource = [
+    {
+      id: 1,
+      pid: 0,
+      name: '一级菜单A'
+    },
+    {
+      id: 2,
+      pid: 0,
+      name: '一级菜单B'
+    },
+    {
+      id: 3,
+      pid: 0,
+      name: '一级菜单C'
+    },
+    {
+      id: 4,
+      pid: 1,
+      name: '二级菜单A-A'
+    },
+    {
+      id: 5,
+      pid: 1,
+      name: '二级菜单A-B'
+    },
+    {
+      id: 6,
+      pid: 2,
+      name: '二级菜单B-B'
+    },
+    {
+      id: 7,
+      pid: 2,
+      name: '二级菜单B-C'
+    },
+    {
+      id: 8,
+      pid: 6,
+      name: '三级菜单B-B-A'
+    },
+    {
+      id: 9,
+      pid: 6,
+      name: '三级菜单B-B-B'
+    },
+  ];
+
+  function treeData(source, id, parentId, children) {
+    let cloneData = JSON.parse(JSON.stringify(source))
+    return cloneData.filter(father => {
+      let branchArr = cloneData.filter(child => father[id] === child[parentId]);
+      branchArr.length > 0 ? father[children] = branchArr : ''
+      return father[parentId] === 0
+    })
+  }
+
+  let treeDataRes = treeData(dataSource, 'id', 'pid', 'children');
+  const code = document.createElement('code')
+  code.innerText = JSON.stringify(treeDataRes)
+  document.body.appendChild(code)
+</script>
+</html>
