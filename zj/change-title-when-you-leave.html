@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>change-title-when-you-leave</title>
+</head>
+<body>
+
+</body>
+<script>
+  window.onload = function () {
+    function func() {
+      document.title = document[a] ? '别走，好吗' : d
+    }
+
+    let a = document.title, b = document.title, d = document.title;
+
+    if ('undefined' != typeof document.hidden) {
+      a = 'hidden';
+      b = 'visibilitychange';
+    } else if ('undefined' != typeof document.mozHidden) {
+      a = 'mozHidden';
+      b = 'mozvisibilitychange'
+    } else if ('undefined' != typeof document.webkitHidden) {
+      a = 'webkitHidden'
+      b = 'webkitvisibilitychange'
+    }
+
+    if ('undefined' != typeof document.addEventListener && 'undefined' != typeof document[a]) {
+      document.addEventListener(b, func, 0)
+    }
+  };
+</script>
+</html>

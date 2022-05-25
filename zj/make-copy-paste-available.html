@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>make-copy-paste-available</title>
+</head>
+<body>
+<a href="javascript:(function(){window.addEventListener('copy',function(event){event.stopPropagation()},true);window.addEventListener('paste',function(event){event.stopPropagation()},true);window.addEventListener('contextmenu',function(event){event.stopPropagation()},true);window.addEventListener('selectstart',function(event){event.stopPropagation()},true);for(let node of document.querySelectorAll('*')){if(node.style!==undefined){var objcss=window.getComputedStyle(node);if(undefined!==objcss['userSelect']&&'auto'!==objcss['userSelect']){var cssText=node.getAttribute('style')?node.getAttribute(%22style%22)+%22;user-select:auto%20!important%22:%22user-select:auto%20!important%22;node.setAttribute(%22style%22,cssText)}if(undefined!==objcss[%22webkitUserSelect%22]&&%22auto%22!==objcss[%22webkitUserSelect%22]){var%20cssText=node.getAttribute(%22style%22)?node.getAttribute(%22style%22)+%22;-webkit-user-select:auto%20!important%22:%22-webkit-user-select:auto%20!important%22;node.setAttribute(%22style%22,cssText)}if(undefined!==objcss[%22mozUserSelect%22]&&%22auto%22!==objcss[%22mozUserSelect%22]){var%20cssText=node.getAttribute(%22style%22)?node.getAttribute(%22style%22)+%22;-moz-user-select:auto%20!important%22:%22-moz-user-select:auto%20!important%22;node.setAttribute(%22style%22,cssText)}}}alert(%22Text%20copy%20and%20right%20click%20restrictions%20have%20been%20lifted!%22)})();">🔒解除复制网页限制</a>
+<a href="javascript: (function(window) {var eventArr = ['contextmenu', 'dragstart', 'mouseup', 'copy', 'beforecopy', 'selectstart', 'select', 'keydown'];function runScript(window) {var document = window['document'], $ = window['jQuery'], unbind = function(ele) { eventArr.forEach(function(evt) { ele['on' + evt] = null;if ($) { $(ele).unbind(evt); } try { if (/frame/i.test(ele.tagName)) { runScript(ele.contentWindow); } } catch (err) {}}); }; [window, document].forEach(unbind); for (var i = 0, all = document.all, len = all.length; i < len; i++) { var ele = all[i]; if (ele && ele.nodeType === 1) { unbind(ele); } } } runScript(window);window['alert']('enable baidu wenku copy successfully');})(window);">🔒gao-baidu-wenku-copy</a>
+</body>
+<script>
+</script>
+</html>

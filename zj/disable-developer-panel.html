@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>disable-developer-panel</title>
+</head>
+<body>
+你倒是打开控制台啊
+</body>
+<script>
+  // rewrite event function
+  window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+    if (event.keyCode = 123) { // F12
+      event.preventDefault();
+      window.event.returnValue = false;
+    }
+  }
+
+  window.oncontextmenu = function () {
+    event.preventDefault();
+    return false;
+  }
+
+  const threshold = 160;// 控制台的宽或高阈值
+  // 每秒检查一次
+  window.setInterval(function () {
+    if (window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold) {
+      window.location.reload();
+    }
+  }, 1e3);
+</script>
+</html>
