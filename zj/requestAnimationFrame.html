@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>requestAnimationFrame</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+</body>
+<script type="text/javascript">
+  let start = void 0;
+  let div = document.querySelector('div')
+
+  const step = (timestamp) => {
+    if (!start) {
+      start = timestamp;
+    }
+    let progress = timestamp - start;
+    console.log(timestamp, start, progress)
+    div.style.left = Math.min(progress / 10, 200) + 'px';
+    if (progress < 2000) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+</script>
+</html>

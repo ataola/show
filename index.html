@@ -132,6 +132,12 @@
   <dd><a href="zj/disable-developer-panel.html">disable-developer-panel</a></dd>
   <dd><a href="zj/change-title-when-you-leave.html">change-title-when-you-leave</a></dd>
   <dd><a href="zj/rulai.html">rulai</a></dd>
+  <dd><a href="zj/requestAnimationFrame.html">requestAnimationFrame</a></dd>
+  <dd><a href="zj/performance-dot-now.html">performance-dot-now</a></dd>
+  <dd><a href="zj/echarts-demo.html">echarts-demo</a></dd>
+  <dd><a href="zj/h5-文字转语音.html">h5-文字转语音</a></dd>
+  <dd><a href="zj/h5-语音转文字.html">h5-语音转文字</a></dd>
+  <dd><a href="zj/暗黑模式.html">暗黑模式</a></dd>
   <dt>
     <h3>效果(一些网上的网页，我扒下来学习下)</h3>
   </dt>
@@ -160,6 +166,9 @@
     <h3>Vue</h3>
   </dt>
   <dd><a href="vue/vue-audio.html">Vue Audio</a></dd>
+  <dd><a href="vue/responsive-defineProperty.html">responsive-defineProperty</a></dd>
+  <dd><a href="vue/responsive-proxy.html">responsive-proxy</a></dd>
+  <dd><a href="vue/responsive-value-get-set.html">responsive-value-get-set</a></dd>
   <dt>
     <h3>设计模式</h3>
   </dt>
@@ -298,5 +307,48 @@
   console.log(Date.now());
   console.log(new Date().getTime());
   console.log((new Date()).valueOf());
+
+  // 统计一共有多少个html标签
+  console.log(new Set([...document.querySelectorAll('*')].map(n => n.nodeName)).size)
+
+  console.log(Object.entries([...document.querySelectorAll('*')].map(n => n.tagName).reduce((pre, cur) => {
+    pre[cur] = (pre[cur] || 0) + 1;
+    return pre;
+  }, {})).sort((a, b) => b[1] - a[1]).slice(0, 3));
+
+  let ret = Object.entries([...document.querySelectorAll('*')].map(node => node.nodeName).reduce((ret, n) => {
+    ret[n] = ret[n] ? ret[n] + 1 : 1;
+    return ret;
+  }, {})).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  console.table(ret);
+
+  // 桶排序
+  function main() {
+    let tags = Array.from(document.querySelectorAll('*'));
+    let tMap = {}, max = min = 1;
+    tags.forEach(tag => {
+      let v = tag.tagName;
+      if (!tMap[v]) tMap[v] = 0;
+      tMap[v]++;
+      max = Math.max(tMap[v], max);
+      min = Math.min(tMap[v], min);
+    });
+
+    let bucket = new Array(max - min + 1);
+    Object.keys(tMap).forEach(v => {
+      if (!bucket[tMap[v] - min]) bucket[tMap[v] - min] = [];
+      bucket[tMap[v] - min].push(v);
+    });
+
+    let res = [], count = 3, i = bucket.length - 1;
+    while (count > 0 && i >= 0) {
+      if (bucket[i]) {
+        count--;
+        res.push(bucket[i]);
+      }
+      i--;
+    }
+    return res;
+  };
 </script>
 </html>

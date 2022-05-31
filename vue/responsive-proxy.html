@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>responsive-proxy</title>
+</head>
+<body>
+<div id="app"></div>
+<button id="click1">click</button>
+<button id="click2">delete</button>
+</body>
+<script type="text/javascript">
+  const mofa = (count) => count ** 2;
+
+  let double = 2;
+  let obj = {
+    value: 1
+  };
+
+  let proxy = new Proxy(obj, {
+    get(target, prop) {
+      return target[prop];
+    },
+    set(target, prop, value) {
+      target[prop] = value;
+      if (prop === 'value') {
+        double = mofa(double);
+      }
+    },
+    deleteProperty(target, prop) {
+      delete target[prop];
+      if (prop === 'value') {
+        double = void 0;
+      }
+    }
+  })
+
+  const btn1 = document.querySelector('#click1');
+  const btn2 = document.querySelector('#click2');
+  const div = document.querySelector('#app');
+  div.innerText = `proxy.value: ${proxy.value}, double: ${double}`;
+
+  btn1.addEventListener('click', (e) => {
+    proxy.value = proxy.value * 2;
+    div.innerText = `proxy.value: ${proxy.value}, double: ${double}`;
+  })
+
+  // delete的时候 set不会跟着执行
+  btn2.addEventListener('click', (e) => {
+    delete proxy.value;
+    div.innerText = `proxy.value: ${proxy.value}, double: ${double}`;
+  })
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>暗黑模式</title>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .day {
+        background: #333;
+        color: white;
+      }
+
+      .night {
+        background: black;
+        color: #ddd;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      .day {
+        background: white;
+        color: #555;
+      }
+
+      .night {
+        background: #eee;
+        color: black;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="day">Day</div>
+<div class="night">Night</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>h5-文字转语音</title>
+</head>
+<body>
+<button onclick="sing()">你叉叉，穷哈哈，哈利波特骑着扫帚飞，sorry，sorry！</button>
+</body>
+<script type="text/javascript">
+  /**
+   * text – 要合成的文字内容，字符串。
+   * lang – 使用的语言，字符串， 例如："zh-cn"或'ja-JP'。
+   * voiceURI – 指定希望使用的声音和服务，字符串。
+   * volume – 声音的音量，区间范围是 0 到 1，默认是 1。
+   * rate – 语速，数值，默认值是 1，范围是 0.1 到 10，表示语速的倍数，例如 2 表示正常语速的两倍。
+   * pitch – 表示说话的音高，数值，范围从 0（最小）到 2（最大）。默认值为 1。
+   * onstart – 语音开始时触发。
+   * onpause – 语音暂停时触发。
+   * onresume – 语音重新开始时触发。
+   * onend – 语音结束时触发。
+   * onboundary - 当语音达到单词或句子边界时触发。
+   * onerror - 语音发生错误时触发。
+   * onmark - 语音发生错误时触发。
+   */
+  function sing() {
+    const ssu = new SpeechSynthesisUtterance('你叉叉，穷哈哈，哈利波特骑着扫帚飞，sorry，sorry！');
+    speechSynthesis.speak(ssu);
+  }
+</script>
+</html>

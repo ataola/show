@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>performance-dot-now</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+  let start = performance.now();
+  for (let i = 0; i < 10e7; ++i) {
+    // do nothing
+  }
+  console.log(`Time Span ${performance.now() - start}ms`)
+</script>
+</html>
