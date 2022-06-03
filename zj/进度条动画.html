@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>进度条动画</title>
+  <style>
+    .process {
+      width: 200px;
+      height: 20px;
+      border-radius: 10px;
+      background: repeating-linear-gradient(
+          -45deg,
+          #fafafa 25%,
+          #f93e3e 0,
+          #f93e3e 50%,
+          #fafafa 0,
+          #fafafa 75%,
+          #f93e3e 0
+      );
+      background-size: 15px 15px;
+      animation: panoramic 8s linear infinite;
+    }
+
+    @keyframes panoramic {
+      to {
+        background-position: 200%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="process">
+</div>
+</body>
+</html>
