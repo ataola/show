@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>以斐波那契数列为例，探究其性能</title>
+  <script type="module">
+    import {fib} from './release.js';
+
+    const N = 100000 // 47是最大的不超过精度的
+
+    console.time('Fibonacci')
+    const arr = ['Fibonacci'];
+    for (let i = 0; i < N; i++) {
+      arr.push(`${i}: ${fib(i)}`)
+    }
+    console.timeEnd('Fibonacci')
+
+    function fib2(n) {
+      let a = 0, b = 1
+      if (n > 0) {
+        while (--n) {
+          let t = a + b
+          a = b
+          b = t
+        }
+        return b
+      }
+      return a
+    }
+
+    console.time('Fibonacci2')
+    const arr2 = ['Fibonacci2'];
+    for (let i = 0; i < N; i++) {
+      arr2.push(`${i}: ${fib2(i)}`)
+    }
+    console.timeEnd('Fibonacci2')
+
+
+    // document.body.innerText = arr.join('\n\t')
+  </script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas坐标系的居中问题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas {
+      width: 256px;
+      height: 256px;
+      background-color: #C9C5C5;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .box {
+      display: grid;
+      justify-content: center;
+      align-self: start;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <canvas width="512" height="512"> 您的浏览器暂不支持画布！</canvas>
+    <p>不矫正的样子</p>
+  </div>
+  <div class="box">
+    <canvas width="512" height="512"> 您的浏览器暂不支持画布！</canvas>
+    <p>减去矩形自身宽高一半</p>
+    <p>核心代码： <code>context.rect((canvas.width - rectSize[0]) >> 1, (canvas.height - rectSize[1]) >> 1, ...rectSize);</code></p>
+  </div>
+  <div class="box">
+    <canvas width="512" height="512"> 您的浏览器暂不支持画布！</canvas>
+    <p>反向平移， 好处是复原回去也简单</p>
+    <p>核心代码： <code> context.translate(-rectSize[0] >> 1, -rectSize[1] >> 1);</code></p>
+  </div>
+</div>
+</body>
+<script>
+  const canvasList = document.querySelectorAll('canvas');
+  const rectSize = [100, 100]
+
+  function drawRect(canvas, type = 'default', rectSize = [100, 100]) {
+    const context = canvas.getContext('2d');
+    context.fillStyle = 'red';
+    context.beginPath();
+    if (type === 'default') {
+      context.rect(canvas.width >> 1, canvas.height >> 1, ...rectSize);
+    } else if (type === 'sub') {
+      context.rect((canvas.width - rectSize[0]) >> 1, (canvas.height - rectSize[1]) >> 1, ...rectSize);
+    } else if (type === 'translate') {
+      context.translate(-rectSize[0] >> 1, -rectSize[1] >> 1);
+      context.rect(canvas.width >> 1, canvas.height >> 1, ...rectSize);
+    }
+    context.fill();
+    return context;
+  }
+
+  const ctx1 = drawRect(canvasList[0]);
+  const ctx2 = drawRect(canvasList[1], 'sub');
+  const ctx3 = drawRect(canvasList[2], 'translate');
+
+</script>
+</html>
